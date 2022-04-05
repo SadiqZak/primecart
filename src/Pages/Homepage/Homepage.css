@@ -43,11 +43,6 @@
     box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.2);
 }
 
-.cover-btn:hover{
-    color: var(--menu-bar);
-    background-color: var(--primary-text-color);
-}
-
 @media screen and (max-width:800px) {
     .cover-wrapper{
         top: 25%;

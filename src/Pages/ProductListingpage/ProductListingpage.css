@@ -1,0 +1,27 @@
+@import url(./Sidebar/Sidebar.css);
+
+.productlist-container{
+    width: 100%;
+    display: flex;
+}
+
+.recommended-videos{
+    padding: 2rem;
+    display: flex;
+    flex:1 1 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+.card-products{
+    background-color: var(--icon-color);
+    width: 270px;
+    min-height: 200px;
+    height: max-content;
+}
+
+@media screen and (max-width:400px) {
+    .card-products{
+        width: 100%;
+    }
+}
