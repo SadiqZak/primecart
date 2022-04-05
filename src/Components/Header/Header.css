@@ -1,0 +1,73 @@
+@import url(./Logo/Logo.css);
+
+.header{ 
+    position:sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--menu-bar);
+    position: relative;
+}
+
+.search{
+    flex-grow: 0.4;
+    order: 0;
+    display: flex;
+    text-align: center;
+    border: 1px solid var(--button-color);
+}
+
+.search input{
+    flex-grow: 1;
+    padding: 0.6rem;
+    border: none;
+    outline: none;
+    background-color: var(--white-color);
+    color: var(--menu-color);
+}
+
+.search-icon{
+    width: 3.125rem;
+    padding:0.6rem;
+    cursor: pointer;
+    color: var(--menu-color);
+    background-color: var(--cta-color);
+}
+
+.login-btn{
+    height: fit-content;
+    align-items: center;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: var(--cta-color);
+    color: var(--menu-color);
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    font-weight:500;
+    cursor: pointer;
+}
+
+.header-right{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    order: 1;
+}
+
+
+@media screen and (max-width: 600px) {
+    .search{
+        order: 1;
+    }
+    .header-right{
+        order: 0;
+    } 
+  }
