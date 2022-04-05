@@ -2,7 +2,7 @@ const SidebarChild = () => {
 
   return (
     <>
-      <div className="sidebar-child">Sidebar</div>
+      <div className="sidebar-child">Filter</div>
     </>
   );
 };
