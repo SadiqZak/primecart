@@ -2,11 +2,14 @@ import React from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import data from "../../Backend/db/data";
 import Badge from "../../Components/Header/Badge/Badge";
+import Chips from "../../Components/Chips/Chips";
 
 const ProductListingpage = () => {
   return (
     <div className="productlist-container">
       <Sidebar />
+      <div>
+      <Chips/>
       <div className="recommended-videos">
         {data.map(({ title, img, price,rating }) => (
           <div className="card-products">
@@ -27,6 +30,8 @@ const ProductListingpage = () => {
           </div>
         ))}
       </div>
+      </div>
+      
     </div>
   );
 };

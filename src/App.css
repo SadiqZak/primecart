@@ -4,6 +4,7 @@
 @import url(./Components/Header/Badge/Badge.css);
 @import url(./Pages/Homepage/Homepage.css);
 @import url(./Pages/ProductListingpage/ProductListingpage.css);
+@import url(./Components/Chips/Chips.css);
 
 *{
   margin: 0;
