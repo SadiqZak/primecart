@@ -11,7 +11,7 @@ const CartManagementpage = () => {
   return (
     <div className="cart-management">
       <div className="cart-manage-header">
-      <button className="card-btn"><Link className="link-tag" to="/plp">Go to products page</Link></button>
+      <Link className="link-tag" to="/plp"><button className="card-btn">Go to products page</button></Link>
       <h1>My Cart: {state.addedCartProducts} </h1>
       </div>
       
@@ -28,9 +28,32 @@ const CartManagementpage = () => {
               <div className="card-footer-details">
                 <div className="card-rating">{`★${rating}`}</div>
                 <div>{`₹ ${price}`}</div>
-                <span className="card-icon material-icons">
-                  favorite_border
-                </span>
+                {
+                  !state.productList.find((item)=>item.id===id).cartedState.addedWish &&
+                  <span onClick={()=> dispatch({
+                    type: "AddToWish",
+                    payload: { id, title, price, rating, img },
+                  })} className="card-icon material-icons">
+                favorite_border
+              </span>
+                }
+                {
+                  state.productList.find((item)=>item.id===id).cartedState.addedWish &&
+                //   <Link to="/wishmanagement"><span className="card-icon material-icons">
+                //   favorite
+                // </span></Link>
+                <span
+                onClick={() =>
+                  dispatch({
+                    type: "RemoveFromWish",
+                    payload: { id, title, price, rating, img },
+                  })
+                }
+                className="card-icon material-icons"
+              >
+                favorite
+              </span>
+                }
               </div>
               <button
                 onClick={() =>

@@ -16,7 +16,7 @@ const Header = () => {
           <span className="search-icon material-icons">search</span>
         </div>
         <div className="header-right">
-          <Badge path={"/"} icon={"favorite_border"} type={"ADD_TO_WISH"} />
+          <Badge path={"/wishmanagement"} icon={"favorite_border"} type={"ADD_TO_WISH"} />
           <Badge path={"/cartmanagement"} icon={"shopping_cart"} type={"ADD_TO_CART"} />
           <div>
             <button className="login-btn">Login</button>

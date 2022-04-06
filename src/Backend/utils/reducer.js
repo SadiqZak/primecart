@@ -35,7 +35,7 @@ const reducerFunc = (state, action) => {
       return {
         ...state,
         priceFilter: "",
-        productList: [...state.productListOri],
+        // productList: [...state.productListOri],
       };
     case "Boys":
       return {
@@ -51,7 +51,7 @@ const reducerFunc = (state, action) => {
       return {
         ...state,
         categoryFilter: "",
-        productList: [...state.productListOri],
+        // productList: [...state.productListOri],
       };
     case "4above":
       return {
@@ -77,7 +77,7 @@ const reducerFunc = (state, action) => {
       return {
         ...state,
         currRatingState: "",
-        productList: [...state.productListOri],
+        // productList: [...state.productListOri],
       };
     case "AddToCart":
       const updateCartState = () => {
@@ -129,6 +129,53 @@ const reducerFunc = (state, action) => {
         addedCartProducts: state.addedCartProducts - 1,
         totalAmount:state.totalAmount-prodValDec
       };
+      case "AddToWish":
+      const updateWishState = () => {
+        return [...state.productList].map((item, idx) => {
+          return item.id === action.payload.id
+            ? {
+                ...item,
+                cartedState: {
+                  ...item.cartedState,
+                  addedWish: !state.productList[idx].cartedState.addedWish,
+                },
+              }
+            : item;
+        });
+      };
+
+      return {
+        ...state,
+        wishProducts: [...state.wishProducts, action.payload],
+        productList: updateWishState(),
+        addedWishProducts: state.addedWishProducts + 1,
+      };
+      case "RemoveFromWish":
+  
+        const updateWishStateRemoved = () => {
+          return [...state.productList].map((item, idx) => {
+            return item.id === action.payload.id
+              ? {
+                  ...item,
+                  cartedState: {
+                    ...item.cartedState,
+                    addedWish: !state.productList[idx].cartedState.addedWish,
+                  },
+                }
+              : item;
+          });
+        };
+  
+        const updateWishManagementProducts = () => {
+           return state.wishProducts.filter((item)=>item.id!==action.payload.id)
+        };
+  
+        return {
+          ...state,
+          wishProducts: updateWishManagementProducts(),
+          productList: updateWishStateRemoved(),
+          addedWishProducts: state.addedWishProducts - 1,
+        };
       case "TotalAmount":
         const updateTotalAmount=()=>{
           return state.cartProducts.reduce((acc,curr)=>{

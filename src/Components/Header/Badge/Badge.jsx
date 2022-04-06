@@ -10,7 +10,7 @@ const Badge = ({ icon, type, path }) => {
         <button className="btn-badge">
           <span className="badge">
             {type === "ADD_TO_CART" && state.addedCartProducts}
-            {type === "ADD_TO_WISH" && state.wishedCartProducts}
+            {type === "ADD_TO_WISH" && state.addedWishProducts}
           </span>
           <span className="badge-icon material-icons">{icon}</span>
         </button>
