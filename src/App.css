@@ -30,7 +30,12 @@
   color: var(--primary-text-color);
 }
 
-/* .wd-100{
+.flex-jc-sb{
+  display: flex;
+  justify-content: space-between;
+}
+
+.wd-100{
   width: 100%;
-} */
+}
 

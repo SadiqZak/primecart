@@ -4,6 +4,9 @@
     padding: 0;
 }
 
+input{
+    cursor: pointer;
+}
 .sidebar-wrap{
     padding: 1rem;
     position: sticky;
@@ -47,11 +50,14 @@
     width: 1rem;
 }
 
-.sidebar-child div{
+.action-container{
     text-align: left;
     justify-content: left;
 }
 
+.clear-sidebar{
+    cursor: pointer;
+}
 .sidebar-child.selected{
     background-color: var(--button-color);
 }

@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import data from "../../Backend/db/data";
-import Badge from "../../Components/Header/Badge/Badge";
 import Chips from "../../Components/Chips/Chips";
+import { CardContext } from "../../Backend/utils/card-context";
 
 const ProductListingpage = () => {
+  const {filteredData} = useContext(CardContext)
   return (
     <div className="productlist-container">
       <Sidebar />
       <div>
       <Chips/>
       <div className="recommended-videos">
-        {data.map(({ title, img, price,rating }) => (
-          <div className="card-products">
+        {filteredData.map(({ id, title, img, price,rating }) => (
+          <div key={id} className="card-products">
             <div className="card-products-wrapper">
               <img className="card-thumbnail" src={img} alt="product" />
               <div className="card-footer">
