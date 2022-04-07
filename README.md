@@ -2,7 +2,7 @@
 
 A react eComm site curated for kids. For the love of shoes ;)
 
-### Link to [Live Project](primecart.vercel.app)
+### Link to [Live Project](https://primecart.vercel.app)
 
 ## Available feats
 
