@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CardContext } from "../../../../Backend/utils/card-context";
+import { CardContext } from "../../../../backend/utils/card-context";
 
 const SidebarChild = () => {
   const { state, dispatch } = useContext(CardContext);

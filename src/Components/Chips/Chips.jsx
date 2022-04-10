@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { CardContext } from "../../Backend/utils/card-context";
+import { CardContext } from "../../backend/utils/card-context";
 
 const Chips = () => {
   const { state, dispatch } = useContext(CardContext);

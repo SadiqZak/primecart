@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CardContext } from "../../../Backend/utils/card-context";
+import { CardContext } from "../../../backend/utils/card-context";
 import { Link } from "react-router-dom";
 
 const Badge = ({ icon, type, path }) => {

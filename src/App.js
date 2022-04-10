@@ -6,6 +6,8 @@ import Homepage from './Pages/Homepage/Homepage';
 import ProductListingpage from './Pages/ProductListingpage/ProductListingpage';
 import CartManagementpage from './Pages/CartManagementpage/CartManagementpage';
 import WishListManagement from './Pages/WishListManagement/WishListManagement';
+import Login from './Pages/Login/Login';
+import RequiresAuth from './backend/utils/require-auth';
 
 function App() {
   return (
@@ -14,8 +16,25 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage/>}/>
         <Route path="/plp" element={<ProductListingpage/>}/>
-        <Route path="/cartmanagement" element={<CartManagementpage/>}/>
-        <Route path="/wishmanagement" element={<WishListManagement/>}/>
+        {/* <Route path="/cartmanagement" element={<CartManagementpage/>}/> */}
+        {/* <Route path="/wishmanagement" element={<WishListManagement/>}/> */}
+        <Route path="/login" element={<Login/>}/>
+        <Route
+          path="/cartmanagement"
+          element={
+            <RequiresAuth>
+              <CartManagementpage />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/wishmanagement"
+          element={
+            <RequiresAuth>
+              <WishListManagement/>
+            </RequiresAuth>
+          }
+        />
       </Routes>
     </div>
   );

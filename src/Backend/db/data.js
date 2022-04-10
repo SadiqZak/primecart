@@ -1,6 +1,8 @@
+import { v4 as uuid } from "uuid";
+
 const data=[
     {
-        id:"1",
+        id:uuid(),
         category:"shoes",
         categorySex:"Girls",
         title:"Birk",
@@ -10,7 +12,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"2",
+        id:uuid(),
         category:"shoes",
         categorySex:"Girls",
         title:"Bue",
@@ -20,7 +22,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"3",
+        id:uuid(),
         category:"laces",
         categorySex:"Girls",
         title:"Coral no-tie laces",
@@ -30,7 +32,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"4",
+        id:uuid(),
         category:"laces",
         categorySex:"Boys",
         title:"Dark blue no-tie laces",
@@ -40,7 +42,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"5",
+        id:uuid(),
         category:"shoes",
         categorySex:"Boys",
         title:"Peoni",
@@ -50,7 +52,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"6",
+        id:uuid(),
         category:"shoes",
         categorySex:"Girls",
         title:"Fille",
@@ -61,7 +63,7 @@ const data=[
     },
 
     {
-        id:"7",
+        id:uuid(),
         category:"shoes",
         categorySex:"Boys",
         title:"Gold",
@@ -71,7 +73,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"8",
+        id:uuid(),
         category:"shoes",
         categorySex:"Boys",
         title:"Mikka",
@@ -81,7 +83,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"9",
+        id:uuid(),
         category:"shoes",
         categorySex:"Boys",
         title:"Mint",
@@ -91,7 +93,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"10",
+        id:uuid(),
         category:"shoes",
         categorySex:"Boys",
         title:"Patent Mint",
@@ -101,7 +103,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"11",
+        id:uuid(),
         category:"shoes",
         categorySex:"Boys",
         title:"Purple",
@@ -111,7 +113,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"12",
+        id:uuid(),
         category:"laces",
         categorySex:"Boys",
         title:"Royal blue no-tie laces",
@@ -121,7 +123,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"13",
+        id:uuid(),
         category:"shoes",
         categorySex:"Boys",
         title:"Skjold",
@@ -131,7 +133,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"14",
+        id:uuid(),
         category:"laces",
         categorySex:"Girls",
         title:"Turqoise no-tie laces",
@@ -141,7 +143,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"15",
+        id:uuid(),
         category:"shoes",
         categorySex:"Girls",
         title:"Vigga",
@@ -151,7 +153,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"16",
+        id:uuid(),
         category:"shoes",
         categorySex:"Girls",
         title:"Ville",
@@ -161,7 +163,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"17",
+        id:uuid(),
         category:"laces",
         categorySex:"Boys",
         title:"White no-tie laces",
@@ -171,7 +173,7 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"18",
+        id:uuid(),
         category:"laces",
         categorySex:"Girls",
         title:"Yellow no-tie laces",
