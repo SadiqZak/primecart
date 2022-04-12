@@ -1,13 +1,22 @@
-const Badge =({icon, type})=>{
-  
-    return(
-        <div>
-            <button className="btn-badge">
-                 <span className="badge">0</span>
-                 <span className="badge-icon material-icons">{icon}</span>
-            </button>
-        </div>
-    )
-}
+import React, { useContext } from "react";
+import { CardContext } from "../../../Backend/utils/card-context";
+import { Link } from "react-router-dom";
 
-export default Badge
+const Badge = ({ icon, type, path }) => {
+  const { state } = useContext(CardContext);
+  return (
+    <div className="link-tag">
+      <Link to={path}>
+        <button className="btn-badge">
+          <span className="badge">
+            {type === "ADD_TO_CART" && state.addedCartProducts}
+            {type === "ADD_TO_WISH" && state.wishedCartProducts}
+          </span>
+          <span className="badge-icon material-icons">{icon}</span>
+        </button>
+      </Link>
+    </div>
+  );
+};
+
+export default Badge;

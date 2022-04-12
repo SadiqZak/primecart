@@ -9,6 +9,10 @@ const CardProvider = ({children}) =>{
     const [state, dispatch] = useReducer(reducerFunc, {
         productListOri:[...data],
         productList:[],
+        cartProducts:[],
+        addedCartProducts:0,
+        wishedCartProducts:0,
+        totalAmount:0,
         chipsCategory:"",
         priceFilter:"",
         categoryFilter:"",

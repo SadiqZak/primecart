@@ -73,12 +73,73 @@ const reducerFunc = (state, action) => {
         ...state,
         currRatingState: action.type,
       };
-      case "ClearRatings":
-        return {
+    case "ClearRatings":
+      return {
+        ...state,
+        currRatingState: "",
+        productList: [...state.productListOri],
+      };
+    case "AddToCart":
+      const updateCartState = () => {
+        return [...state.productList].map((item, idx) => {
+          return item.id === action.payload.id
+            ? {
+                ...item,
+                cartedState: {
+                  ...item.cartedState,
+                  addedCart: !state.productList[idx].cartedState.addedCart,
+                },
+              }
+            : item;
+        });
+      };
+
+      return {
+        ...state,
+        cartProducts: [...state.cartProducts, action.payload],
+        productList: updateCartState(),
+        addedCartProducts: state.addedCartProducts + 1,
+      };
+
+      case "RemoveFromCart":
+      const prodValDec = Number(state.cartProducts.find((item)=>item.id===action.payload.id).price)
+
+      const updateCartStateRemoved = () => {
+        return [...state.productList].map((item, idx) => {
+          return item.id === action.payload.id
+            ? {
+                ...item,
+                cartedState: {
+                  ...item.cartedState,
+                  addedCart: !state.productList[idx].cartedState.addedCart,
+                },
+              }
+            : item;
+        });
+      };
+
+      const updateCartManagementProducts = () => {
+         return state.cartProducts.filter((item)=>item.id!==action.payload.id)
+      };
+
+      return {
+        ...state,
+        cartProducts: updateCartManagementProducts(),
+        productList: updateCartStateRemoved(),
+        addedCartProducts: state.addedCartProducts - 1,
+        totalAmount:state.totalAmount-prodValDec
+      };
+      case "TotalAmount":
+        const updateTotalAmount=()=>{
+          return state.cartProducts.reduce((acc,curr)=>{
+            return acc+ Number(curr.price)
+          }, 0)
+        }
+  
+        return{
           ...state,
-          currRatingState: "",
-          productList: [...state.productListOri],
-        };
+          totalAmount:updateTotalAmount()
+        }
     default:
       return state;
   }
