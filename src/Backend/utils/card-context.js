@@ -8,10 +8,12 @@ const CardContext = createContext()
 const CardProvider = ({children}) =>{
     const [state, dispatch] = useReducer(reducerFunc, {
         productListOri:[...data],
+        // productListPrev:[],
         productList:[],
         cartProducts:[],
+        wishProducts:[],
         addedCartProducts:0,
-        wishedCartProducts:0,
+        addedWishProducts:0,
         totalAmount:0,
         chipsCategory:"",
         priceFilter:"",

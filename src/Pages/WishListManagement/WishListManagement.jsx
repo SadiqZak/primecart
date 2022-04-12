@@ -1,19 +1,19 @@
-import React, { useContext } from "react";
-import Sidebar from "./Sidebar/Sidebar";
-import data from "../../Backend/db/data";
-import Chips from "../../Components/Chips/Chips";
-import { CardContext } from "../../Backend/utils/card-context";
-import { Link } from "react-router-dom";
+import React, { useContext } from 'react'
+import {Link} from 'react-router-dom'
+import { CardContext } from '../../Backend/utils/card-context'
 
-const ProductListingpage = () => {
-  const { filteredData, dispatch, state } = useContext(CardContext);
+const WishListManagement=()=> {
+    const {state, dispatch} = useContext(CardContext)
   return (
-    <div className="productlist-container">
-      <Sidebar />
+    <div className="cart-management">
+      <div className="cart-manage-header">
+      <Link className="link-tag" to="/plp"><button className="card-btn">Go to products page</button></Link>
+      <h1>My WishList: {state.addedWishProducts} </h1>
+      </div>
+      
       <div>
-        <Chips />
-        <div className="recommended-videos">
-          {filteredData.map(({ id, title, img, price, rating }) => (
+        <div className="wish-product-listing">
+        {state.wishProducts.map(({ id, img, title, rating, price }) => (
             <div key={id} className="card-products">
               <div className="card-products-wrapper">
                 <img className="card-thumbnail" src={img} alt="product" />
@@ -23,7 +23,8 @@ const ProductListingpage = () => {
               </div>
               <div className="card-footer-details">
                 <div className="card-rating">{`★${rating}`}</div>
-                <div>{`₹ ${price}`}</div>{
+                <div>{`₹ ${price}`}</div>
+                {
                   !state.productList.find((item)=>item.id===id).cartedState.addedWish &&
                   <span onClick={()=> dispatch({
                     type: "AddToWish",
@@ -50,6 +51,17 @@ const ProductListingpage = () => {
               </span>
                 }
               </div>
+              {/* <button
+                onClick={() =>
+                  dispatch({
+                    type: "RemoveFromWish",
+                    payload: { id, title, price, rating, img },
+                  })
+                }
+                className="card-btn-go  "
+              >
+                Remove from Wish List
+              </button> */}
               {!state.productList.find((item) => item.id === id).cartedState
                 .addedCart && (
                 <button
@@ -71,7 +83,7 @@ const ProductListingpage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductListingpage;
+export default WishListManagement

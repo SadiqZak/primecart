@@ -5,6 +5,7 @@ import Header from './Components/Header/Header'
 import Homepage from './Pages/Homepage/Homepage';
 import ProductListingpage from './Pages/ProductListingpage/ProductListingpage';
 import CartManagementpage from './Pages/CartManagementpage/CartManagementpage';
+import WishListManagement from './Pages/WishListManagement/WishListManagement';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Homepage/>}/>
         <Route path="/plp" element={<ProductListingpage/>}/>
         <Route path="/cartmanagement" element={<CartManagementpage/>}/>
+        <Route path="/wishmanagement" element={<WishListManagement/>}/>
       </Routes>
     </div>
   );

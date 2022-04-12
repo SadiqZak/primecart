@@ -1,0 +1,11 @@
+.wish-product-listing{
+    min-height: 300px;
+    height: max-content;
+    background-color: var(--white-color);
+    color: var(--menu-bar);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.2);
+    padding: 1rem;
+}
