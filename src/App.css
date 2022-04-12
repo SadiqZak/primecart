@@ -4,6 +4,7 @@
 @import url(./Components/Header/Badge/Badge.css);
 @import url(./Pages/Homepage/Homepage.css);
 @import url(./Pages/ProductListingpage/ProductListingpage.css);
+@import url(./Components/Chips/Chips.css);
 
 *{
   margin: 0;
@@ -29,7 +30,12 @@
   color: var(--primary-text-color);
 }
 
-/* .wd-100{
+.flex-jc-sb{
+  display: flex;
+  justify-content: space-between;
+}
+
+.wd-100{
   width: 100%;
-} */
+}
 

@@ -2,6 +2,7 @@ const data=[
     {
         id:"1",
         category:"shoes",
+        categorySex:"Girls",
         title:"Birk",
         img: require('../../Assets/Shoes/birk.jpg'),
         price:"1000",
@@ -11,6 +12,7 @@ const data=[
     {
         id:"2",
         category:"shoes",
+        categorySex:"Girls",
         title:"Bue",
         img: require('../../Assets/Shoes/Bue.jpg'),
         price:"2000",
@@ -20,6 +22,7 @@ const data=[
     {
         id:"3",
         category:"laces",
+        categorySex:"Girls",
         title:"Coral no-tie laces",
         img: require('../../Assets/Shoes/coral-no-tie-laces.jpg'),
         price:"800",
@@ -29,6 +32,7 @@ const data=[
     {
         id:"4",
         category:"laces",
+        categorySex:"Boys",
         title:"Dark blue no-tie laces",
         img: require('../../Assets/Shoes/dark-blue-no-tie-laces.jpg'),
         price:"800",
@@ -38,6 +42,7 @@ const data=[
     {
         id:"5",
         category:"shoes",
+        categorySex:"Boys",
         title:"Peoni",
         img: require('../../Assets/Shoes/Peoni.jpg'),
         price:"1900",
@@ -47,6 +52,7 @@ const data=[
     {
         id:"6",
         category:"shoes",
+        categorySex:"Girls",
         title:"Fille",
         img: require('../../Assets/Shoes/Fille.jpg'),
         price:"2500",
@@ -57,6 +63,7 @@ const data=[
     {
         id:"7",
         category:"shoes",
+        categorySex:"Boys",
         title:"Gold",
         img: require('../../Assets/Shoes/Gold.jpg'),
         price:"3000",
@@ -66,6 +73,7 @@ const data=[
     {
         id:"8",
         category:"shoes",
+        categorySex:"Boys",
         title:"Mikka",
         img: require('../../Assets/Shoes/Mikka.jpg'),
         price:"1000",
@@ -75,6 +83,7 @@ const data=[
     {
         id:"9",
         category:"shoes",
+        categorySex:"Boys",
         title:"Mint",
         img: require('../../Assets/Shoes/Mint.jpg'),
         price:"2000",
@@ -84,6 +93,7 @@ const data=[
     {
         id:"10",
         category:"shoes",
+        categorySex:"Boys",
         title:"Patent Mint",
         img: require('../../Assets/Shoes/Patent-Mint.jpg'),
         price:"1000",
@@ -93,6 +103,7 @@ const data=[
     {
         id:"11",
         category:"shoes",
+        categorySex:"Boys",
         title:"Purple",
         img: require('../../Assets/Shoes/Purple.jpg'),
         price:"1900",
@@ -102,6 +113,7 @@ const data=[
     {
         id:"12",
         category:"laces",
+        categorySex:"Boys",
         title:"Royal blue no-tie laces",
         img: require('../../Assets/Shoes/royal-blue-no-tie-laces.jpg'),
         price:"1000",
@@ -111,6 +123,7 @@ const data=[
     {
         id:"13",
         category:"shoes",
+        categorySex:"Boys",
         title:"Skjold",
         img: require('../../Assets/Shoes/Skjold.jpg'),
         price:"1999",
@@ -120,6 +133,7 @@ const data=[
     {
         id:"14",
         category:"laces",
+        categorySex:"Girls",
         title:"Turqoise no-tie laces",
         img: require('../../Assets/Shoes/turqoise-no-tie-laces.jpg'),
         price:"999",
@@ -127,8 +141,9 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"14",
+        id:"15",
         category:"shoes",
+        categorySex:"Girls",
         title:"Vigga",
         img: require('../../Assets/Shoes/Vigga.jpg'),
         price:"3000",
@@ -136,8 +151,9 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"15",
+        id:"16",
         category:"shoes",
+        categorySex:"Girls",
         title:"Ville",
         img: require('../../Assets/Shoes/Ville.jpg'),
         price:"1500",
@@ -145,8 +161,9 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"16",
+        id:"17",
         category:"laces",
+        categorySex:"Boys",
         title:"White no-tie laces",
         img: require('../../Assets/Shoes/white-no-tie-laces.jpg'),
         price:"800",
@@ -154,8 +171,9 @@ const data=[
         cartedState:{addedCart:false, addedWish:false},
     },
     {
-        id:"17",
+        id:"18",
         category:"laces",
+        categorySex:"Girls",
         title:"Yellow no-tie laces",
         img: require('../../Assets/Shoes/yellow-no-tie-laces.jpg'),
         price:"900",
