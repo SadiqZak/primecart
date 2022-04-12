@@ -7,7 +7,7 @@ import { AuthContext } from "../../backend/utils/auth-context";
 
 const Header = () => {
   const navigate = useNavigate()
-  const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext)
+  const { auth, setAuth} = useContext(AuthContext)
   return (
     <div className="header">
       <div className="header-wrapper">
@@ -21,7 +21,7 @@ const Header = () => {
           <Badge path={"/wishmanagement"} icon={"favorite_border"} type={"ADD_TO_WISH"} />
           <Badge path={"/cartmanagement"} icon={"shopping_cart"} type={"ADD_TO_CART"} />
           <div>
-          {!isLoggedIn && (
+          { !auth.isAuthenticated && (
           <button
           className="login-btn"
             onClick={() => {
@@ -31,11 +31,11 @@ const Header = () => {
             Login
           </button>
         )}
-        {isLoggedIn && (
+        {auth.isAuthenticated && (
           <button
           className="login-btn"
             onClick={() => {
-              setIsLoggedIn((prevVal) => !prevVal);
+              setAuth({...auth, isAuthenticated:!auth.isAuthenticated})
             }}
           >
             Logout

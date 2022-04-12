@@ -6,6 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { CardProvider } from "./backend/utils/card-context";
 import { AuthProvider } from "./backend/utils/auth-context";
+import { makeServer } from "./server";
+
+// Call make Server
+makeServer();
 
 ReactDOM.render(
   <React.StrictMode>

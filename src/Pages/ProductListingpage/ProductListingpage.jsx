@@ -1,17 +1,12 @@
 import React, { useContext } from "react";
 import Sidebar from "./Sidebar/Sidebar";
-// import data from "../../Backend/db/data";
 import Chips from "../../Components/Chips/Chips";
 import { CardContext } from "../../backend/utils/card-context";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../backend/utils/auth-context";
-import { Navigate, useLocation } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const ProductListingpage = () => {
   const { filteredData, dispatch, state } = useContext(CardContext);
-  const { isLoggedIn } = useContext(AuthContext);
-  const navigate = useNavigate();
-  // const location = useLocation();
+
   return (
     <div className="productlist-container">
       <Sidebar />
@@ -45,9 +40,6 @@ const ProductListingpage = () => {
                 )}
                 {state.productList.find((item) => item.id === id).cartedState
                   .addedWish && (
-                  //   <Link to="/wishmanagement"><span className="card-icon material-icons">
-                  //   favorite
-                  // </span></Link>
                   <span
                     onClick={() =>
                       dispatch({
@@ -65,8 +57,6 @@ const ProductListingpage = () => {
                 .addedCart && (
                 <button
                   onClick={() => {
-                    // return !isLoggedIn
-                    //   ? navigate('/login'):
                       dispatch({
                           type: "AddToCart",
                           payload: { id, title, price, rating, img },

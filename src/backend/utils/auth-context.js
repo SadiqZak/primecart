@@ -3,10 +3,10 @@ import { createContext, useState } from "react";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [auth, setAuth] = useState({token:"", isAuthenticated:false})
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+    <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
     </AuthContext.Provider>
   );

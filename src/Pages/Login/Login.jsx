@@ -1,11 +1,25 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../backend/utils/auth-context";
+import {LoginService} from "../../services/auth-services";
 
 const Login = () => {
-  const { setIsLoggedIn } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
+  const [userLog, setUserLog] = useState({email:"", password:""})
   const navigate = useNavigate();
   const location = useLocation();
+
+  const loginHandler = async (e)=>{
+      e.preventDefault()
+
+      const data = await LoginService(userLog.email, userLog.password)
+
+      if(data){
+        setAuth({...auth, token:data.token, isAuthenticated:true})
+        return location.state?.from?.pathname ?  navigate(location.state?.from?.pathname): navigate('/')
+      }
+
+  }
 
   return (
     <>
@@ -17,24 +31,25 @@ const Login = () => {
 
         <div>
           <div className="login-wrapper">
-            <form className="login-form" action="">
+            <form onSubmit={loginHandler } className="login-form" action="">
                 <div className="flex-dir-column-login">
                 <small>Email:</small>
-                <input className="login-inp" type="text" />
+                <input onChange={(e)=> setUserLog({...userLog, email:e.target.value})} className="login-inp" type="email" placeholder="adarshbalika@gmail.com" required/>
                 </div>
                 
                 <div className="flex-dir-column-login">
                 <small>Password:</small>
-                <input className="login-inp" type="password" />
+                <input onChange={(e)=> setUserLog({...userLog, password:e.target.value})} className="login-inp" type="password" placeholder="adarshbalika" required/>
                 </div>
                
+                <button className="login-btn">Login</button>
             </form>
-            <button className="login-btn">Login</button>
+            
             {location?.state?.from?.pathname && (
               <button
                 className="login-btn"
                 onClick={() => {
-                  setIsLoggedIn((prevVal) => !prevVal);
+                  setAuth({...auth, isAuthenticated:!auth.isAuthenticated})
                   navigate(location.state?.from?.pathname);
                 }}
               >
@@ -45,7 +60,7 @@ const Login = () => {
               <button
                 className="login-btn"
                 onClick={() => {
-                  setIsLoggedIn((prevVal) => !prevVal);
+                  setAuth({...auth, isAuthenticated:!auth.isAuthenticated})
                   navigate("/");
                 }}
               >
