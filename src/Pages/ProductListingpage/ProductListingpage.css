@@ -1,0 +1,15 @@
+@import url(./Sidebar/Sidebar.css);
+@import url(../../Components/Card/Card.css);
+
+.productlist-container{
+    width: 100%;
+    display: flex;
+}
+
+.recommended-videos{
+    padding: 2rem;
+    display: flex;
+    flex:1 1 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }

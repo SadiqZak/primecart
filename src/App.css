@@ -3,6 +3,7 @@
 @import url(./Components/Header/Header.css);
 @import url(./Components/Header/Badge/Badge.css);
 @import url(./Pages/Homepage/Homepage.css);
+@import url(./Pages/ProductListingpage/ProductListingpage.css);
 
 *{
   margin: 0;
@@ -16,8 +17,19 @@
   --menu-bar:#212121;
   --button-color:#3D3D3D;
   --cta-color:#FEBD69;
+  --background-grey-color:#F5F6F7;
 }
 
 .color-primary{
   color: var(--primary-text-color);
 }
+
+.link-tag-btn{
+  text-decoration: none;
+  color: var(--primary-text-color);
+}
+
+/* .wd-100{
+  width: 100%;
+} */
+

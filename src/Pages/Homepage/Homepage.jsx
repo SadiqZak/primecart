@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const Homepage = () => {
   return (
@@ -11,26 +12,27 @@ const Homepage = () => {
       <div className="cover-wrapper">
         <div className="cover-text">FOR COLOURFUL STEPS IN YOUR LIFE</div>
         <div className="btn-wrapper">
-            <button className="cover-btn">Explore</button>
+          <button className="cover-btn"><Link className="link-tag-btn" to={'/plp'}>Explore</Link></button>
         </div>
         
       </div>
 
       <div className="secondary-cover-container">
-        <div>
+      <Link to={'/plp'}><div>
           <img
             className="secondary-cover"
             src={require("../../Assets/secondary-cover-1.jpg")}
             alt="homepage"
           />
-        </div>
-        <div>
+        </div></Link>
+        
+        <Link to={'/plp'}><div>
           <img
             className="secondary-cover"
             src={require("../../Assets/secondary-cover-2.jpg")}
             alt="homepage"
           />
-        </div>
+        </div></Link>
       </div>
       <div className="footer">
           <div className="color-primary">©PrimeCart, Inc.</div>

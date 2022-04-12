@@ -1,12 +1,14 @@
 import React from "react";
 import Logo from "./Logo/Logo";
 import Badge from "./Badge/Badge";
+import {Link} from "react-router-dom";
 
 const Header = () => {
   return (
     <div className="header">
       <div className="header-wrapper">
-        <Logo />
+        <Link to="/"><Logo /></Link>
+        
         <div className="search">
           <input placeholder="Search" type="text" />
           <span className="search-icon material-icons">search</span>
