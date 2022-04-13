@@ -55,6 +55,10 @@
     cursor: pointer;
 }
 
+.login-btn:hover{
+    opacity: 0.8;
+}
+
 .header-right{
     display: flex;
     gap: 2rem;

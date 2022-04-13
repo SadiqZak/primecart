@@ -8,6 +8,7 @@
 @import url(./Pages/CartManagementpage/CartManagementpage.css);
 @import url(./Components/Card/Card.css);
 @import url(./Pages/WishListManagement/WishListManagement.css);
+@import url(./Pages/Login/Login.css);
 
 *{
   margin: 0;

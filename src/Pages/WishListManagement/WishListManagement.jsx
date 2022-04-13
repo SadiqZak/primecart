@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import {Link} from 'react-router-dom'
-import { CardContext } from '../../Backend/utils/card-context'
+import { CardContext } from '../../backend/utils/card-context'
 
 const WishListManagement=()=> {
     const {state, dispatch} = useContext(CardContext)

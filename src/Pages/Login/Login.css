@@ -1,0 +1,31 @@
+.login-wrapper{
+    margin: auto;
+    min-height: 300px;
+    height: max-content;
+    width:350px;
+    background-color: var(--white-color);
+    color: var(--menu-bar);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.2);
+    padding: 1rem;
+}
+
+.flex-dir-column-login{
+    gap:0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-inp{
+    flex-grow: 1;
+    padding: 0.6rem;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

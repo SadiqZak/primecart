@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import Sidebar from "./Sidebar/Sidebar";
-import data from "../../Backend/db/data";
 import Chips from "../../Components/Chips/Chips";
-import { CardContext } from "../../Backend/utils/card-context";
-import { Link } from "react-router-dom";
+import { CardContext } from "../../backend/utils/card-context";
+import { Link} from "react-router-dom";
 
 const ProductListingpage = () => {
   const { filteredData, dispatch, state } = useContext(CardContext);
+
   return (
     <div className="productlist-container">
       <Sidebar />
@@ -23,49 +23,56 @@ const ProductListingpage = () => {
               </div>
               <div className="card-footer-details">
                 <div className="card-rating">{`★${rating}`}</div>
-                <div>{`₹ ${price}`}</div>{
-                  !state.productList.find((item)=>item.id===id).cartedState.addedWish &&
-                  <span onClick={()=> dispatch({
-                    type: "AddToWish",
-                    payload: { id, title, price, rating, img },
-                  })} className="card-icon material-icons">
-                favorite_border
-              </span>
-                }
-                {
-                  state.productList.find((item)=>item.id===id).cartedState.addedWish &&
-                //   <Link to="/wishmanagement"><span className="card-icon material-icons">
-                //   favorite
-                // </span></Link>
-                <span
-                onClick={() =>
-                  dispatch({
-                    type: "RemoveFromWish",
-                    payload: { id, title, price, rating, img },
-                  })
-                }
-                className="card-icon material-icons"
-              >
-                favorite
-              </span>
-                }
+                <div>{`₹ ${price}`}</div>
+                {!state.productList.find((item) => item.id === id).cartedState
+                  .addedWish && (
+                  <span
+                    onClick={() =>
+                      dispatch({
+                        type: "AddToWish",
+                        payload: { id, title, price, rating, img },
+                      })
+                    }
+                    className="card-icon material-icons"
+                  >
+                    favorite_border
+                  </span>
+                )}
+                {state.productList.find((item) => item.id === id).cartedState
+                  .addedWish && (
+                  <span
+                    onClick={() =>
+                      dispatch({
+                        type: "RemoveFromWish",
+                        payload: { id, title, price, rating, img },
+                      })
+                    }
+                    className="card-icon material-icons"
+                  >
+                    favorite
+                  </span>
+                )}
               </div>
               {!state.productList.find((item) => item.id === id).cartedState
                 .addedCart && (
                 <button
-                  onClick={() =>
-                    dispatch({
-                      type: "AddToCart",
-                      payload: { id, title, price, rating, img },
-                    })
-                  }
+                  onClick={() => {
+                      dispatch({
+                          type: "AddToCart",
+                          payload: { id, title, price, rating, img },
+                        });
+                  }}
                   className="card-btn"
                 >
                   Add to Cart
                 </button>
               )}
               {state.productList.find((item) => item.id === id).cartedState
-                .addedCart && <Link className="link-tag" to="/cartmanagement"><button className="card-btn-go">Go to Cart</button></Link>}
+                .addedCart && (
+                <Link className="link-tag" to="/cartmanagement">
+                  <button className="card-btn-go">Go to Cart</button>
+                </Link>
+              )}
             </div>
           ))}
         </div>

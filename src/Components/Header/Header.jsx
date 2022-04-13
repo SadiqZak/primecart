@@ -1,11 +1,13 @@
 import React, {useContext} from "react";
 import Logo from "./Logo/Logo";
 import Badge from "./Badge/Badge";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import { AuthContext } from "../../backend/utils/auth-context";
 
 
 const Header = () => {
-
+  const navigate = useNavigate()
+  const { auth, setAuth} = useContext(AuthContext)
   return (
     <div className="header">
       <div className="header-wrapper">
@@ -19,7 +21,26 @@ const Header = () => {
           <Badge path={"/wishmanagement"} icon={"favorite_border"} type={"ADD_TO_WISH"} />
           <Badge path={"/cartmanagement"} icon={"shopping_cart"} type={"ADD_TO_CART"} />
           <div>
-            <button className="login-btn">Login</button>
+          { !auth.isAuthenticated && (
+          <button
+          className="login-btn"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Login
+          </button>
+        )}
+        {auth.isAuthenticated && (
+          <button
+          className="login-btn"
+            onClick={() => {
+              setAuth({...auth, isAuthenticated:!auth.isAuthenticated})
+            }}
+          >
+            Logout
+          </button>
+        )}
           </div>
         </div>
       </div>

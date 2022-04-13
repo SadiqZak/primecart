@@ -1,20 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
-import {CardProvider} from './Backend/utils/card-context'
+import { CardProvider } from "./backend/utils/card-context";
+import { AuthProvider } from "./backend/utils/auth-context";
+import { makeServer } from "./server";
+
+// Call make Server
+makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-    <CardProvider>
-    <App />
-    </CardProvider>
+      <AuthProvider>
+        <CardProvider>
+          <App />
+        </CardProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
