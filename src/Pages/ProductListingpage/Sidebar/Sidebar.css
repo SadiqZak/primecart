@@ -7,6 +7,10 @@
 input{
     cursor: pointer;
 }
+
+.price-range-filter{
+    width: 100%;
+}
 .sidebar-wrap{
     padding: 1rem;
     position: sticky;
