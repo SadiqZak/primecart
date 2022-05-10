@@ -8,7 +8,6 @@ const CardContext = createContext()
 const CardProvider = ({children}) =>{
     const [state, dispatch] = useReducer(reducerFunc, {
         productListOri:[...data],
-        // productListPrev:[],
         productList:[],
         cartProducts:[],
         wishProducts:[],
@@ -19,13 +18,15 @@ const CardProvider = ({children}) =>{
         priceFilter:"",
         categoryFilter:"",
         currRatingState:"",
+        priceRangeFilter:"",
        
     })
     useEffect(()=>{
         dispatch({type:"Initial state"})
     },[])
 
-    const chipsFilteredData = filter(state.productList, state.chipsCategory)
+    const rangeFilteredData = filter(state.productList, {rangeValue:state.priceRangeFilter, filterType: "PriceRange" })
+    const chipsFilteredData = filter(rangeFilteredData, state.chipsCategory)
     const priceFilteredData =filter(chipsFilteredData, state.priceFilter)
     const categoryFilteredData = filter(priceFilteredData, state.categoryFilter)
     const filteredData = filter(categoryFilteredData, state.currRatingState)

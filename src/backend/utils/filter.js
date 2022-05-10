@@ -19,7 +19,10 @@ const filter=(arr, type)=>{
     ?arr.filter((item)=>Number(item.rating)>2)
     :type === "1above"
     ?arr.filter((item)=>Number(item.rating)>1)
+    :type.filterType === "PriceRange"
+    ?arr.filter((item)=>Number(item.price)<=Number(type.rangeValue) )
     :arr
 }
+
 
 export default filter

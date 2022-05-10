@@ -187,9 +187,15 @@ const reducerFunc = (state, action) => {
           ...state,
           totalAmount:updateTotalAmount()
         }
+      case "PriceRange":
+        return{
+          ...state,
+          priceRangeFilter: action.payload
+        }
     default:
       return state;
-  }
+  };
+  
 };
 
 export default reducerFunc;
