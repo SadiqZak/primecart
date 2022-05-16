@@ -3,9 +3,10 @@ import Sidebar from "./Sidebar/Sidebar";
 import Chips from "../../Components/Chips/Chips";
 import { CardContext } from "../../backend/utils/card-context";
 import { Link} from "react-router-dom";
+// import ReactLoading from 'react-loading';
 
 const ProductListingpage = () => {
-  const { filteredData, dispatch, state } = useContext(CardContext);
+  const { filteredData, dispatch, state, isLoading } = useContext(CardContext);
 
   return (
     <div className="productlist-container">
@@ -13,6 +14,9 @@ const ProductListingpage = () => {
       <div>
         <Chips />
         <div className="recommended-videos">
+        <div className="loader">
+          {isLoading && "...Loading"}
+        </div>
           {filteredData.map(({ id, title, img, price, rating }) => (
             <div key={id} className="card-products">
               <div className="card-products-wrapper">

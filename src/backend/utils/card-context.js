@@ -1,13 +1,14 @@
-import { createContext, useEffect, useReducer } from "react";
-import data from "../db/data";
+import { createContext, useEffect, useReducer, useState } from "react";
+// import data from "../db/data";
 import reducerFunc from "./reducer";
 import filter from "./filter";
+import { getAllProductsService } from "../../services/product-services";
 
 const CardContext = createContext()
 
 const CardProvider = ({children}) =>{
     const [state, dispatch] = useReducer(reducerFunc, {
-        productListOri:[...data],
+        // productListOri:[],
         productList:[],
         cartProducts:[],
         wishProducts:[],
@@ -18,12 +19,31 @@ const CardProvider = ({children}) =>{
         priceFilter:"",
         categoryFilter:"",
         currRatingState:"",
-        priceRangeFilter:"",
+        priceRangeFilter:"800",
        
     })
+
+    const [isLoading, setIsLoading] = useState(false)
+
     useEffect(()=>{
-        dispatch({type:"Initial state"})
+        setIsLoading(true)
+        getAllProducts()
     },[])
+
+    const getAllProducts = async()=>{
+        try{
+            const productsRes = await getAllProductsService()
+            if(productsRes.status===200){
+                dispatch({
+                    type:"Initial state",
+                    payload:{products: productsRes.data.products}
+                })
+                setIsLoading(false)
+            }
+        }catch(err){
+            console.error(err)
+        }
+    }
 
     const rangeFilteredData = filter(state.productList, {rangeValue:state.priceRangeFilter, filterType: "PriceRange" })
     const chipsFilteredData = filter(rangeFilteredData, state.chipsCategory)
@@ -32,7 +52,7 @@ const CardProvider = ({children}) =>{
     const filteredData = filter(categoryFilteredData, state.currRatingState)
 
     return(
-        <CardContext.Provider value={{state, dispatch, filteredData}}>
+        <CardContext.Provider value={{state, dispatch, filteredData, isLoading, setIsLoading}}>
             {children}
         </CardContext.Provider>
     )

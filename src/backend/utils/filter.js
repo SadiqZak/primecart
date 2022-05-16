@@ -1,8 +1,8 @@
 const filter=(arr, type)=>{
     return type==="shoes"
-    ? arr.filter((item)=>item.category===type)
+    ? arr.filter((item)=>item.categoryName===type)
     :type==="laces"
-    ? arr.filter((item)=>item.category===type)
+    ? arr.filter((item)=>item.categoryName===type)
     :type==="HighToLow"
     ? arr.sort((item1, item2)=>item2.price-item1.price)
     :type==="LowToHigh"
