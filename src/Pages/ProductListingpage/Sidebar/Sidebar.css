@@ -7,6 +7,10 @@
 input{
     cursor: pointer;
 }
+
+.price-range-filter{
+    width: 100%;
+}
 .sidebar-wrap{
     padding: 1rem;
     position: sticky;
@@ -60,6 +64,12 @@ input{
 }
 .sidebar-child.selected{
     background-color: var(--button-color);
+}
+
+.label-containers{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 @media screen and (max-width:800px){

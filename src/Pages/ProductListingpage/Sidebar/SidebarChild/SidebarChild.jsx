@@ -6,10 +6,28 @@ const SidebarChild = () => {
   return (
     <>
       <div className="sidebar-child">
+      <div className="sidebar-child-wrapper">
+          <div className="wd-100 flex-jc-sb">
+            <div>
+              <small>Price:</small>
+            </div>
+          </div>
+
+          <div className="action-container">
+            <div className="label-containers"><label>₹800</label><label>₹1500</label><label>₹3000</label></div>
+            <input
+              className="price-range-filter"
+              type="range"
+              min="800"
+              max="3000"
+              onChange={(e) => dispatch({ type: "PriceRange", payload:e.target.value })}
+            />
+          </div>
+        </div>
         <div className="sidebar-child-wrapper">
           <div className="wd-100 flex-jc-sb">
             <div>
-              <small>Prices:</small>
+              <small>Sort by:</small>
             </div>
             <div>
               <small className="clear-sidebar" onClick={()=>dispatch({type:"ClearPrice"})}>Clear</small>
