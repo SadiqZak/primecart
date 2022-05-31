@@ -17,7 +17,8 @@ const ProductListingpage = () => {
         <div className="loader">
           {isLoading && "...Loading"}
         </div>
-          {filteredData.map(({ id, title, img, price, rating }) => (
+          {filteredData.length===0 && "No Information available"}
+          {filteredData && filteredData.map(({ id, title, img, price, rating }) => (
             <div key={id} className="card-products">
               <div className="card-products-wrapper">
                 <img className="card-thumbnail" src={img} alt="product" />
