@@ -7,7 +7,7 @@ import ProductListingpage from './Pages/ProductListingpage/ProductListingpage';
 import CartManagementpage from './Pages/CartManagementpage/CartManagementpage';
 import WishListManagement from './Pages/WishListManagement/WishListManagement';
 import Login from './Pages/Login/Login';
-import RequiresAuth from './backend/utils/require-auth';
+import RequiresAuth from './utils/require-auth';
 
 import Mockman from "mockman-js";
 

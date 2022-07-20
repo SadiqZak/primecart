@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import Chips from "../../Components/Chips/Chips";
-import { CardContext } from "../../backend/utils/card-context";
+import { CardContext } from "../../context/card-context";
 import { Link} from "react-router-dom";
 // import ReactLoading from 'react-loading';
 

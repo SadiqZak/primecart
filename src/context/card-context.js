@@ -1,8 +1,8 @@
 import { createContext, useEffect, useReducer, useState } from "react";
 // import data from "../db/data";
-import reducerFunc from "./reducer";
-import filter from "./filter";
-import { getAllProductsService } from "../../services/product-services";
+import reducerFunc from "../utils/reducer";
+import filter from "../utils/filter";
+import { getAllProductsService } from "../services/product-services";
 
 const CardContext = createContext()
 

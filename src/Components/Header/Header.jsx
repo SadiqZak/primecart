@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import Logo from "./Logo/Logo";
 import Badge from "./Badge/Badge";
 import {Link, useNavigate} from "react-router-dom";
-import { AuthContext } from "../../backend/utils/auth-context";
+import { AuthContext } from "../../context/auth-context";
 
 
 const Header = () => {
