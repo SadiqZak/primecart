@@ -1,24 +1,26 @@
-import { useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
-import {LoginService} from "../../services/auth-services";
 
 const Login = () => {
-  const { auth, setAuth } = useContext(AuthContext);
-  const [userLog, setUserLog] = useState({email:"", password:""})
+  const { loginUser, stateAuth} = useContext(AuthContext);
+  const {isAuthenticated} = stateAuth
+  const [userLog, setUserLog] = useState({email:"adarshbalika@gmail.com", password:"adarshbalika"})
   const navigate = useNavigate();
   const location = useLocation();
 
+  useEffect(()=>{
+    if(isAuthenticated){
+      return location.state?.from?.pathname
+        ? navigate(location.state?.from?.pathname)
+        : navigate("/");
+    }
+  },[isAuthenticated])
+
   const loginHandler = async (e)=>{
       e.preventDefault()
-
-      const data = await LoginService(userLog.email, userLog.password)
-
-      if(data){
-        setAuth({...auth, token:data.token, isAuthenticated:true})
-        return location.state?.from?.pathname ?  navigate(location.state?.from?.pathname): navigate('/')
-      }
-
+      loginUser({email:userLog.email, password:userLog.password})
+      return location.state?.from?.pathname ?  navigate(location.state?.from?.pathname): navigate('/')
   }
 
   return (
@@ -49,7 +51,7 @@ const Login = () => {
               <button
                 className="login-btn"
                 onClick={() => {
-                  setAuth({...auth, isAuthenticated:!auth.isAuthenticated})
+                  loginUser({email:userLog.email, password:userLog.password})
                   navigate(location.state?.from?.pathname);
                 }}
               >
@@ -60,13 +62,14 @@ const Login = () => {
               <button
                 className="login-btn"
                 onClick={() => {
-                  setAuth({...auth, isAuthenticated:!auth.isAuthenticated})
+                  loginUser({email:userLog.email, password:userLog.password})
                   navigate("/");
                 }}
               >
                 Login as Guest
               </button>
             )}
+            <div>Don't have an account? <Link className="signup-link" to='/signup'>Sign up here</Link> </div>
           </div>
         </div>
       </div>
@@ -75,3 +78,11 @@ const Login = () => {
 };
 
 export default Login;
+
+
+      // const data = await LoginService(userLog.email, userLog.password)
+
+      // if(data){
+      //   setAuth({...auth, token:data.token, isAuthenticated:true})
+      //   return location.state?.from?.pathname ?  navigate(location.state?.from?.pathname): navigate('/')
+      // }

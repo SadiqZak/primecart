@@ -1,8 +1,16 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { CardContext } from "../../../../context/card-context";
 
 const SidebarChild = () => {
   const { state, dispatch } = useContext(CardContext);
+  const [currentRange, setCurrentRange] = useState('2000')
+
+  useEffect(()=>{
+    dispatch({ type: "PriceRange", payload:currentRange })
+  },[currentRange])
+  
   return (
     <>
       <div className="sidebar-child">
@@ -14,13 +22,20 @@ const SidebarChild = () => {
           </div>
 
           <div className="action-container">
-            <div className="label-containers"><label>₹800</label><label>₹1500</label><label>₹3000</label></div>
+            {/* <div className="label-containers"><label>₹800</label><label>₹1500</label><label>₹3000</label></div> */}
+            <div className="label-containers">
+            <option value="800">800</option>
+            <option value="1500">1500</option>
+            <option value="3000">3000</option>
+            </div>
+          
             <input
               className="price-range-filter"
               type="range"
-              min="800"
+              min='800'
+              value={currentRange}
               max="3000"
-              onChange={(e) => dispatch({ type: "PriceRange", payload:e.target.value })}
+              onChange={(e) => {dispatch({ type: "PriceRange", payload:e.target.value }); setCurrentRange(e.target.value)}}
             />
           </div>
         </div>

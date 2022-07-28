@@ -18,14 +18,17 @@ const ProductListingpage = () => {
           {isLoading && "...Loading"}
         </div>
           {filteredData.length===0 && "No Information available"}
-          {filteredData && filteredData.map(({ id, title, img, price, rating }) => (
+          {filteredData && filteredData.map(({ _id, id, title, img, price, rating, count }) => (
+         
             <div key={id} className="card-products">
+                 <Link to={`/singlepage/${_id}`}>
               <div className="card-products-wrapper">
                 <img className="card-thumbnail" src={img} alt="product" />
                 <div className="card-footer">
                   <div className="card-title">{title}</div>
                 </div>
               </div>
+              </Link>
               <div className="card-footer-details">
                 <div className="card-rating">{`★${rating}`}</div>
                 <div>{`₹ ${price}`}</div>
@@ -35,7 +38,7 @@ const ProductListingpage = () => {
                     onClick={() =>
                       dispatch({
                         type: "AddToWish",
-                        payload: { id, title, price, rating, img },
+                        payload: { id, title, price, rating, img, _id },
                       })
                     }
                     className="card-icon material-icons"
@@ -49,7 +52,7 @@ const ProductListingpage = () => {
                     onClick={() =>
                       dispatch({
                         type: "RemoveFromWish",
-                        payload: { id, title, price, rating, img },
+                        payload: { id, title, price, rating, img, _id },
                       })
                     }
                     className="card-icon material-icons"
@@ -64,7 +67,7 @@ const ProductListingpage = () => {
                   onClick={() => {
                       dispatch({
                           type: "AddToCart",
-                          payload: { id, title, price, rating, img },
+                          payload: { id,_id, title, price, rating, img, count },
                         });
                   }}
                   className="card-btn"
