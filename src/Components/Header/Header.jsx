@@ -7,7 +7,9 @@ import { AuthContext } from "../../context/auth-context";
 
 const Header = () => {
   const navigate = useNavigate()
-  const { auth, setAuth} = useContext(AuthContext)
+  const { stateAuth, dispatch} = useContext(AuthContext)
+  const {isAuthenticated} = stateAuth
+  
   return (
     <div className="header">
       <div className="header-wrapper">
@@ -21,7 +23,7 @@ const Header = () => {
           <Badge path={"/wishmanagement"} icon={"favorite_border"} type={"ADD_TO_WISH"} />
           <Badge path={"/cartmanagement"} icon={"shopping_cart"} type={"ADD_TO_CART"} />
           <div>
-          { !auth.isAuthenticated && (
+          { !isAuthenticated && (
           <button
           className="login-btn"
             onClick={() => {
@@ -31,11 +33,11 @@ const Header = () => {
             Login
           </button>
         )}
-        {auth.isAuthenticated && (
+        {isAuthenticated && (
           <button
           className="login-btn"
             onClick={() => {
-              setAuth({...auth, isAuthenticated:!auth.isAuthenticated})
+              dispatch({type:"logoutUser"})
             }}
           >
             Logout

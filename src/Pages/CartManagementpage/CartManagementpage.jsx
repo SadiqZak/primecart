@@ -1,13 +1,15 @@
 import React, { useContext, useEffect } from "react";
 import { CardContext } from "../../context/card-context";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const CartManagementpage = () => {
   const { state, dispatch } = useContext(CardContext);
+
   useEffect(()=>{
       dispatch({type:"TotalAmount"})
-  },[])
-  
+  },[state.cartProducts])
+ 
   return (
     <div className="cart-management">
       <div className="cart-manage-header">
@@ -17,17 +19,19 @@ const CartManagementpage = () => {
       
       <div className="cart-management-wrapper">
         <div className="cart-product-listing">
-          {state.cartProducts.map(({ id, img, title, rating, price }) => (
+          {state.cartProducts.map(({ id,_id, img, title, rating, price, count }) => (
             <div key={id} className="card-products">
+                   <Link to={`/singlepage/${_id}`}>
               <div className="card-products-wrapper">
                 <img className="card-thumbnail" src={img} alt="product" />
                 <div className="card-footer">
                   <div className="card-title">{title}</div>
                 </div>
               </div>
+              </Link>
               <div className="card-footer-details">
                 <div className="card-rating">{`★${rating}`}</div>
-                <div>{`₹ ${price}`}</div>
+                <div>{`Price: ₹${price} Qty: ${count}`}</div>
                 {
                   !state.productList.find((item)=>item.id===id).cartedState.addedWish &&
                   <span onClick={()=> dispatch({
@@ -46,7 +50,7 @@ const CartManagementpage = () => {
                 onClick={() =>
                   dispatch({
                     type: "RemoveFromWish",
-                    payload: { id, title, price, rating, img },
+                    payload: { id, title, price, rating, img, _id },
                   })
                 }
                 className="card-icon material-icons"
@@ -59,7 +63,7 @@ const CartManagementpage = () => {
                 onClick={() =>
                   dispatch({
                     type: "RemoveFromCart",
-                    payload: { id, title, price, rating, img },
+                    payload: { id,_id, title, price, rating, img, count },
                   })
                 }
                 className="card-btn-go  "
@@ -75,9 +79,14 @@ const CartManagementpage = () => {
               <h3>Price Details</h3>
               <div>
                 {
-                    state.cartProducts.map(({title, price, id})=>(
+                    state.cartProducts?.map(({title, price, id, count})=>(
                         <div key={id} className="cart-flex">
-                            <div>{title}</div>  
+                            <div className="card-products-title">{title}</div>  
+                            <div className="quantity">
+                            <button className="quantity-button" onClick={()=>{return count>1 ?dispatch({type:"DecreaseCount",payload:id}):count}}>-</button>
+                              <div className="quantity-count">{count}</div>
+                              <button className="quantity-button" onClick={()=>{return count>0 ?dispatch({type:"IncreaseCount",payload:id}):count}}>+</button> 
+                            </div>
                             <div>₹ {price}</div>
                         </div>
                         

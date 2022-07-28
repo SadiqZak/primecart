@@ -24,7 +24,8 @@ export const products = [
     description:{
         material: "Textile upper w. print/pattern",
         additional: "Soft textile lining, cushioned footbed,Colored Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -38,7 +39,8 @@ export const products = [
     description:{
         material: "High Quality luxury textile upper w. print/pattern",
         additional: "Soft spanish leather lining, cushioned footbed, Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -52,7 +54,8 @@ export const products = [
     description:{
         material: "High Quality luxury textile upper w. print/pattern",
         additional: "Soft spanish leather lining, cushioned footbed, Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -66,7 +69,8 @@ export const products = [
     description:{
         material: "High Quality luxury textile upper w. print/pattern",
         additional: "Soft spanish leather lining, cushioned footbed, Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -80,7 +84,8 @@ export const products = [
     description:{
         material: "Soft luxury Italian leather upper ",
         additional: "Soft luxury Italien leather lining, cushioned footbed, Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -94,7 +99,8 @@ export const products = [
     description:{
         material: "Soft luxury Italian leather upper ",
         additional: "Soft spanish leather lining cushioned footbed,Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 
 {
@@ -109,7 +115,8 @@ export const products = [
     description:{
         material: "Soft luxury Italian leather upper ",
         additional: "Soft spanish leather lining cushioned footbed,Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -123,7 +130,8 @@ export const products = [
     description:{
         material: "Soft luxury Italian leather upper ",
         additional: "Soft spanish leather lining cushioned footbed,Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -137,7 +145,8 @@ export const products = [
     description:{
         material: "Soft luxury Italian leather upper ",
         additional: "Soft spanish leather lining cushioned footbed,Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -151,7 +160,8 @@ export const products = [
     description:{
         material: "Textile upper w. print/pattern",
         additional: "Soft textile lining, cushioned footbed,Colored Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -165,7 +175,8 @@ export const products = [
     description:{
         material: "Textile upper w. print/pattern",
         additional: "Soft textile lining, cushioned footbed,Colored Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -179,7 +190,8 @@ export const products = [
     description:{
         material: "Textile upper w. print/pattern",
         additional: "Soft textile lining, cushioned footbed,Colored Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -193,7 +205,8 @@ export const products = [
     description:{
         material: "Textile upper w. print/pattern",
         additional: "Soft textile lining, cushioned footbed,Colored Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -207,7 +220,8 @@ export const products = [
     description:{
         material: "High Quality luxury textile upper w. print/pattern",
         additional: "Soft spanish leather lining, cushioned footbed, Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -221,7 +235,8 @@ export const products = [
     description:{
         material: "High Quality luxury textile upper w. print/pattern",
         additional: "Soft spanish leather lining, cushioned footbed, Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -235,7 +250,8 @@ export const products = [
     description:{
         material: "High Quality luxury textile upper w. print/pattern",
         additional: "Soft spanish leather lining, cushioned footbed, Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -249,7 +265,8 @@ export const products = [
     description:{
         material: "High Quality luxury textile upper w. print/pattern",
         additional: "Soft spanish leather lining, cushioned footbed, Natural rubber with top stitching detail" 
-    }
+    },
+    count:1
 },
 {
     _id:uuid(),
@@ -263,6 +280,7 @@ export const products = [
     description:{
         material: "High Quality luxury textile upper w. print/pattern",
         additional: "Soft spanish leather lining, cushioned footbed, Natural rubber with top stitching detail" 
-    }
+    },
+      count:1
 },
 ]

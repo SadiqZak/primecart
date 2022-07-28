@@ -6,6 +6,27 @@ const reducerFunc = (state, action) => {
         chipsCategory: "All",
         productList: action.payload.products,
       };
+    case "loginUser":
+      return{
+        ...state, 
+        user:action.payload.foundUser,
+        token: action.payload.encodedToken,
+        isAuthenticated: true
+      };
+      case "signupUser":
+      return{
+        ...state, 
+        user:action.payload.createdUser,
+        token: action.payload.encodedToken,
+        isAuthenticated: true
+      };
+      case "logoutUser":
+        return{
+          ...state, 
+          user:"",
+          token: "",
+          isAuthenticated: false
+        };
     case "All":
       return {
         ...state,
@@ -192,6 +213,38 @@ const reducerFunc = (state, action) => {
           ...state,
           priceRangeFilter: action.payload
         }
+      case "IncreaseCount":
+        const increaseCount = ()=>{
+          return [...state.cartProducts].map((product)=>{
+            return product.id === action.payload ?
+            {
+              ...product,
+              count:product.count+1,
+              price: Number(product.price)/product.count * (product.count+1)
+            }:product
+          })
+        }
+
+        return {
+          ...state,
+          cartProducts:increaseCount()
+        }
+
+        case "DecreaseCount":
+          const decreaseCount = ()=>{
+            return [...state.cartProducts].map((product)=>{
+              return product.id === action.payload ?
+              {
+                ...product,
+                count:product.count-1,
+                price: Number(product.price)-Number(product.price)/product.count
+              }:product
+            })
+          }
+          return {
+            ...state,
+            cartProducts:decreaseCount()
+          }
     default:
       return state;
   };

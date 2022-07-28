@@ -9,10 +9,11 @@ const SingleProductsPage = () => {
     const { productList } = state
 
     const findProduct = productList.find((product) => product._id === productId)
-    const { _id, img, title, rating, id, price, description} = findProduct
+    const { _id, img, title, rating, id, price, description, count} = findProduct
     const {material, additional}=description
     return (
         <div className="single-card-product">
+            <Link className="link-tag" to="/plp"><button className="card-btn">Go to products page</button></Link>
             <div className="single-product-wrapper">
                 <div>
                     <img className='single-thumbnail' src={img} alt="product" />
@@ -65,7 +66,7 @@ const SingleProductsPage = () => {
                                 onClick={() => {
                                     dispatch({
                                         type: "AddToCart",
-                                        payload: { id, title, price, rating, img },
+                                        payload: { id, title, price, rating, img, count },
                                     });
                                 }}
                                 className="card-btn"

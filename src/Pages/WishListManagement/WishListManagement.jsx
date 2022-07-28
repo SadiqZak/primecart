@@ -13,14 +13,16 @@ const WishListManagement=()=> {
       
       <div>
         <div className="wish-product-listing">
-        {state.wishProducts.map(({ id, img, title, rating, price }) => (
+        {state.wishProducts.map(({ id, _id, count, img, title, rating, price }) => (
             <div key={id} className="card-products">
+               <Link to={`/singlepage/${_id}`}>
               <div className="card-products-wrapper">
                 <img className="card-thumbnail" src={img} alt="product" />
                 <div className="card-footer">
                   <div className="card-title">{title}</div>
                 </div>
               </div>
+              </Link>
               <div className="card-footer-details">
                 <div className="card-rating">{`★${rating}`}</div>
                 <div>{`₹ ${price}`}</div>
@@ -42,7 +44,7 @@ const WishListManagement=()=> {
                 onClick={() =>
                   dispatch({
                     type: "RemoveFromWish",
-                    payload: { id, title, price, rating, img },
+                    payload: {_id, id, title, price, rating, img },
                   })
                 }
                 className="card-icon material-icons"
@@ -68,7 +70,7 @@ const WishListManagement=()=> {
                   onClick={() =>
                     dispatch({
                       type: "AddToCart",
-                      payload: { id, title, price, rating, img },
+                      payload: { id, title, price, rating, img, count, _id },
                     })
                   }
                   className="card-btn"

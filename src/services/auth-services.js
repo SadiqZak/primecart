@@ -1,15 +1,13 @@
 import axios from 'axios';
 
-export const LoginService = async (email, password) =>{
-    try{
-        const response = await axios.post('/api/auth/login', {email, password}) //response post the API call
-  
-        if(response.status === 200 || response.status ===201){ //the response.status includes information regarding the status code
- 
-            return response.data
-        }
+export const loginService = ({email, password})=>{
+    return axios.post('/api/auth/login',{
+        email,password
+    })
+}
 
-    }catch(error){
-        console.error(error)
-    }
+export const signupServices = ({email, password, firstName, lastName}) =>{
+    return axios.post('/api/auth/signup', {
+        email, password, firstName, lastName
+    })
 }
