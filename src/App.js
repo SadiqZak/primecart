@@ -10,6 +10,7 @@ import Login from './Pages/Login/Login';
 import RequiresAuth from './utils/require-auth';
 
 import Mockman from "mockman-js";
+import SingleProductsPage from './Pages/SingleProductsPage/SingleProductsPage';
 
 function MockAPI() {
   return (
@@ -43,6 +44,10 @@ function App() {
               <WishListManagement/>
             </RequiresAuth>
           }
+        />
+            <Route
+          path="/singlepage/:productId"
+          element={<SingleProductsPage/> }
         />
         <Route path="/mockman" element={<Mockman/>}/>
       </Routes>

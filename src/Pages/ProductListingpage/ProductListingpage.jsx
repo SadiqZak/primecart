@@ -18,14 +18,17 @@ const ProductListingpage = () => {
           {isLoading && "...Loading"}
         </div>
           {filteredData.length===0 && "No Information available"}
-          {filteredData && filteredData.map(({ id, title, img, price, rating }) => (
+          {filteredData && filteredData.map(({ _id, id, title, img, price, rating }) => (
+         
             <div key={id} className="card-products">
+                 <Link to={`/singlepage/${_id}`}>
               <div className="card-products-wrapper">
                 <img className="card-thumbnail" src={img} alt="product" />
                 <div className="card-footer">
                   <div className="card-title">{title}</div>
                 </div>
               </div>
+              </Link>
               <div className="card-footer-details">
                 <div className="card-rating">{`★${rating}`}</div>
                 <div>{`₹ ${price}`}</div>
