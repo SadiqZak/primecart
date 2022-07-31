@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import Chips from "../../Components/Chips/Chips";
 import { CardContext } from "../../context/card-context";
 import { Link} from "react-router-dom";
 import Header from "../../Components/Header/Header";
+import {FaAngleUp} from "react-icons/fa"
+import {FaAngleDown} from "react-icons/fa"
 // import ReactLoading from 'react-loading';
 
 const ProductListingpage = () => {
   const { filteredData, dispatch, state, isLoading } = useContext(CardContext);
+  const [filter, setFilter] = useState(false)
 
   return (
     <div> 
@@ -16,8 +19,8 @@ const ProductListingpage = () => {
       <Chips />
       </div>
        <div className="productlist-container">
-      <Sidebar />
-      <div>
+      <Sidebar filter={filter} />
+      <div className={`recommended-cont ${filter && `display-none`}`}>
         <div className="recommended-videos">
         <div className="loader">
           {isLoading && "...Loading"}
@@ -91,7 +94,13 @@ const ProductListingpage = () => {
         </div>
       </div>
     </div>
-
+    <div className="sidebar-toggle-button" onClick={()=>setFilter((prev)=>!prev)}>
+      {
+        !filter ? <FaAngleUp/> : <FaAngleDown/> 
+      }
+          
+          <p>Filter</p>
+      </div>
     </div>
      );
 };

@@ -5,7 +5,7 @@ import { CardContext } from "../../../../context/card-context";
 
 const SidebarChild = () => {
   const { state, dispatch } = useContext(CardContext);
-  const [currentRange, setCurrentRange] = useState("2000");
+  const [currentRange, setCurrentRange] = useState("3000");
 
   useEffect(() => {
     dispatch({ type: "PriceRange", payload: currentRange });

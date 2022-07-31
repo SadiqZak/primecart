@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
+import Header from "../../Components/Header/Header";
 
 const Login = () => {
   const { loginUser, stateAuth} = useContext(AuthContext);
@@ -24,7 +25,10 @@ const Login = () => {
   }
 
   return (
-    <>
+    <div>
+            <div className="pos-sticky">
+      <Header/>
+      </div>
       <div className="cart-management">
         <div className="cart-manage-header">
           <h2>Please Login to continue</h2>
@@ -73,7 +77,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

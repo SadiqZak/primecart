@@ -84,10 +84,51 @@ input{
     justify-content: space-between;
 }
 
-@media screen and (max-width:800px){
+@media screen and (max-width:600px){
     .sidebar{
         position: absolute;
-        left: -500px;
-        overflow: hidden;
+        width: 100%;
+        visibility: hidden;
+    }
+
+    .sidebar-wrap{
+        height: 72vh;
+        overflow-y: scroll;
+    }
+}
+
+.display-none{
+    display: none;
+}
+
+@media screen and (min-width:600px){
+    .display-none{
+       display: contents;
+    }
+}
+
+.visibility-visible{
+    visibility: visible;
+}
+
+
+.sidebar-toggle-button{
+    padding: 0.3rem;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid var(--icon-color);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: var(--white-color);
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    visibility: hidden;
+}
+
+@media screen and (max-width:800px){
+    .sidebar-toggle-button{
+        visibility: visible;
     }
 }

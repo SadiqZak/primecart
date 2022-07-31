@@ -5,6 +5,7 @@ import Header from '../../Components/Header/Header'
 
 const WishListManagement=()=> {
     const {state, dispatch} = useContext(CardContext)
+    console.log(state.wishProducts)
   return (
     <div>   <div className="pos-sticky">
     <Header/>

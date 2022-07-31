@@ -1,9 +1,9 @@
 import SidebarChild from "./SidebarChild/SidebarChild";
 
-const Sidebar = () => {
+const Sidebar = ({filter}) => {
   return (
     <>
-      <div className="sidebar">
+    <div className={`sidebar ${filter && `visibility-visible`}`}>
         <div className="sidebar-wrap">
           <h3>Filter</h3>
           <SidebarChild/>
@@ -14,3 +14,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

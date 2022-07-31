@@ -25,7 +25,7 @@ const CartManagementpage = () => {
       <div className="cart-management-wrapper">
         <div className="cart-product-listing">
           {state.cartProducts.map(({ id,_id, img, title, rating, price, count }) => (
-            <div key={id} className="card-products">
+            <div key={id} className="cart-management-card">
                    <Link to={`/singlepage/${_id}`}>
               <div className="card-products-wrapper">
                 <img className="card-thumbnail" src={img} alt="product" />
