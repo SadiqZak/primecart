@@ -17,6 +17,14 @@
     cursor: pointer;
 }
 
+@media screen and (max-width:600px) {
+    .cart-management-card{
+        width: 100%
+    }
+    
+}
+
+
 .cart-manage-header{
     margin:1rem auto;
     display: flex;
