@@ -1,5 +1,5 @@
 .sidebar{
-    flex: 0 0 20rem;
+    flex: 0 0 17rem;
     background-color: var(--background-grey-color);
     padding: 0;
 }
@@ -11,15 +11,18 @@ input{
 .price-range-filter{
     width: 100%;
 }
+
 .sidebar-wrap{
     padding: 1rem;
     position: sticky;
-	top: 77px;
+	top: 20vh;
     width: 100%;
     height: max-content;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    height: 80vh;
+    overflow-y: scroll;
 }
 
 .sidebar-child{
@@ -36,18 +39,17 @@ input{
 }
 
 .sidebar-child-wrapper{
+    font-size: 0.95rem;
     width: 100%;
-    margin: 1rem 0 1rem 0;
+    margin: 0.5rem 0 0.5rem 0;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-  background-color: var(--white-color);
-  padding: 1rem;
-  box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.2);
+    background-color: var(--white-color);
+    padding: 1rem;
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.2);
 }
-/* .sidebar-child:hover{
-   background-color: var(--button-color);
-} */
+
 
 .sidebar-child span{
     margin: 0 1rem 0 1rem;
@@ -57,6 +59,16 @@ input{
 .action-container{
     text-align: left;
     justify-content: left;
+}
+
+.action-container-radio{
+    display: flex;
+    gap: 0.5rem;
+    text-align: left;
+    align-content: center;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
 }
 
 .clear-sidebar{

@@ -1,11 +1,5 @@
 @import url(./Logo/Logo.css);
 
-.header{ 
-    position:sticky;
-    top: 0;
-    z-index: 100;
-}
-
 .header-wrapper{
     display: flex;
     flex-wrap: wrap;
@@ -70,8 +64,13 @@
 @media screen and (max-width: 600px) {
     .search{
         order: 1;
+        margin-top: 0.5rem;
+        width: 100%;
     }
+
     .header-right{
         order: 0;
+        gap:1rem;
+        font-size:0.9rem
     } 
   }

@@ -3,16 +3,21 @@ import Sidebar from "./Sidebar/Sidebar";
 import Chips from "../../Components/Chips/Chips";
 import { CardContext } from "../../context/card-context";
 import { Link} from "react-router-dom";
+import Header from "../../Components/Header/Header";
 // import ReactLoading from 'react-loading';
 
 const ProductListingpage = () => {
   const { filteredData, dispatch, state, isLoading } = useContext(CardContext);
 
   return (
-    <div className="productlist-container">
+    <div> 
+      <div className="pos-sticky">
+      <Header/>
+      <Chips />
+      </div>
+       <div className="productlist-container">
       <Sidebar />
       <div>
-        <Chips />
         <div className="recommended-videos">
         <div className="loader">
           {isLoading && "...Loading"}
@@ -86,7 +91,9 @@ const ProductListingpage = () => {
         </div>
       </div>
     </div>
-  );
+
+    </div>
+     );
 };
 
 export default ProductListingpage;

@@ -1,9 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import Header from "../../Components/Header/Header"
 
 const Homepage = () => {
   return (
     <div>
+      <div className="pos-sticky">
+      <Header/>
+      </div>
       <img
         className="cover"
         src={require("../../Assets/cover.jpg")}
