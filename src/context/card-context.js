@@ -8,10 +8,10 @@ const CardContext = createContext()
 
 const CardProvider = ({children}) =>{
     const [state, dispatch] = useReducer(reducerFunc, {
-        // productListOri:[],
         productList:[],
         cartProducts:[],
         wishProducts:[],
+        searchFilterData:[],
         addedCartProducts:0,
         addedWishProducts:0,
         totalAmount:0,
@@ -45,11 +45,18 @@ const CardProvider = ({children}) =>{
         }
     }
 
-    const rangeFilteredData = filter(state.productList, {rangeValue:state.priceRangeFilter, filterType: "PriceRange" })
+    let rangeFilteredData =[]
+    if(state.searchFilterData.length!==0){
+       rangeFilteredData = filter(state.searchFilterData, {rangeValue:state.priceRangeFilter, filterType: "PriceRange" })
+    }else{
+        rangeFilteredData = filter(state.productList, {rangeValue:state.priceRangeFilter, filterType: "PriceRange" })
+    }  
     const chipsFilteredData = filter(rangeFilteredData, state.chipsCategory)
     const priceFilteredData =filter(chipsFilteredData, state.priceFilter)
     const categoryFilteredData = filter(priceFilteredData, state.categoryFilter)
-    const filteredData = filter(categoryFilteredData, state.currRatingState)
+    let filteredData = filter(categoryFilteredData, state.currRatingState)
+
+ 
 
     return(
         <CardContext.Provider value={{state, dispatch, filteredData, isLoading, setIsLoading}}>

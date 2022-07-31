@@ -1,10 +1,15 @@
 import React, { useContext } from 'react'
 import {Link} from 'react-router-dom'
 import { CardContext } from '../../context/card-context'
+import Header from '../../Components/Header/Header'
 
 const WishListManagement=()=> {
     const {state, dispatch} = useContext(CardContext)
+    console.log(state.wishProducts)
   return (
+    <div>   <div className="pos-sticky">
+    <Header/>
+    </div>
     <div className="cart-management">
       <div className="cart-manage-header">
       <Link className="link-tag" to="/plp"><button className="card-btn">Go to products page</button></Link>
@@ -30,7 +35,7 @@ const WishListManagement=()=> {
                   !state.productList.find((item)=>item.id===id).cartedState.addedWish &&
                   <span onClick={()=> dispatch({
                     type: "AddToWish",
-                    payload: { id, title, price, rating, img },
+                    payload: { _id, id, title, price, rating, img },
                   })} className="card-icon material-icons">
                 favorite_border
               </span>
@@ -84,6 +89,7 @@ const WishListManagement=()=> {
           ))}
         </div>
       </div>
+    </div>
     </div>
   )
 }

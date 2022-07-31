@@ -9,6 +9,14 @@
     padding: 1rem;
 }
 
+.cart-management-card{
+    width: 400px;
+    min-height: 200px;
+    height: max-content;
+    border: 1px solid var(--background-grey-color);
+    cursor: pointer;
+}
+
 .cart-manage-header{
     margin:1rem auto;
     display: flex;

@@ -1,6 +1,6 @@
 .card-products{
     /* background-color: var(--background-grey-color); */
-    width: 400px;
+    width: 280px;
     min-height: 200px;
     height: max-content;
     border: 1px solid var(--background-grey-color);
@@ -11,7 +11,7 @@
     opacity: 0.8;
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:600px) {
     .card-products{
         width: 100%;
     }
@@ -35,7 +35,7 @@
 }
 
 .card-title{
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 
@@ -45,13 +45,14 @@
     border-radius: 0.2rem;
     padding: 0.1rem 0.2rem ;
 }
+
 .card-footer-details{
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem 1rem 2rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
     color: var(--button-color);
     /* background-color: var(--white-color); */
@@ -66,7 +67,7 @@
     background-color: var(--cta-color);
     color: var(--menu-color);
     padding: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight:500;
     cursor: pointer;
     border: 1px solid var(--cta-color);
@@ -87,7 +88,7 @@
     background-color: var(--white-color);
     color: var(--menu-color);
     padding: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight:500;
     cursor: pointer;
     border: 1px solid var(--cta-color);

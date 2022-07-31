@@ -13,6 +13,7 @@
 *{
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 :root{
@@ -48,3 +49,9 @@
   width: 100%;
 }
 
+.pos-sticky{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border: none;
+}

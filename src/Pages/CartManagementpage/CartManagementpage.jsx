@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { CardContext } from "../../context/card-context";
 import { Link } from "react-router-dom";
+import Header from "../../Components/Header/Header";
 import { useState } from "react";
 
 const CartManagementpage = () => {
@@ -11,6 +12,10 @@ const CartManagementpage = () => {
   },[state.cartProducts])
  
   return (
+    <div>
+      <div className="pos-sticky">
+    <Header/>
+    </div>
     <div className="cart-management">
       <div className="cart-manage-header">
       <Link className="link-tag" to="/plp"><button className="card-btn">Go to products page</button></Link>
@@ -20,7 +25,7 @@ const CartManagementpage = () => {
       <div className="cart-management-wrapper">
         <div className="cart-product-listing">
           {state.cartProducts.map(({ id,_id, img, title, rating, price, count }) => (
-            <div key={id} className="card-products">
+            <div key={id} className="cart-management-card">
                    <Link to={`/singlepage/${_id}`}>
               <div className="card-products-wrapper">
                 <img className="card-thumbnail" src={img} alt="product" />
@@ -109,6 +114,7 @@ const CartManagementpage = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

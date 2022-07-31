@@ -7,15 +7,15 @@
 }
 
 .recommended-videos{
-    padding: 2rem;
+    width: 100%;
+    padding: 1rem;
     display: flex;
-    flex:1 1 0;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
-  /* .loader{
-    margin: auto;
-    width: 100%;
-    height: max-content;
-  } */
+  @media screen and (max-width:800px){
+    .recommended-videos{
+      padding-bottom: 5rem;
+    }
+}

@@ -31,6 +31,7 @@ const reducerFunc = (state, action) => {
       return {
         ...state,
         chipsCategory: action.type,
+        searchFilterData:[]
       };
     case "shoes":
       return {
@@ -56,7 +57,6 @@ const reducerFunc = (state, action) => {
       return {
         ...state,
         priceFilter: "",
-        // productList: [...state.productListOri],
       };
     case "Boys":
       return {
@@ -72,7 +72,6 @@ const reducerFunc = (state, action) => {
       return {
         ...state,
         categoryFilter: "",
-        // productList: [...state.productListOri],
       };
     case "4above":
       return {
@@ -98,8 +97,18 @@ const reducerFunc = (state, action) => {
       return {
         ...state,
         currRatingState: "",
-        // productList: [...state.productListOri],
       };
+    case "SearchFilterData":
+      return{
+        ...state,
+        searchFilterData: action.payload,
+        chipsCategory: "",
+      }
+      case "ClearSearchFilterData":
+        return{
+          ...state,
+          searchFilterData: [],
+        }
     case "AddToCart":
       const updateCartState = () => {
         return [...state.productList].map((item, idx) => {

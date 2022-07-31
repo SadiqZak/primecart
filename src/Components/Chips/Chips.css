@@ -4,18 +4,10 @@
     gap: 1rem;
     padding: 0.5rem;
     background-color: var(--background-grey-color);
-    /* border-bottom:1px solid var(--icon-color) ; */
     cursor: pointer;
-    position: sticky;
-    top: 77px;
     z-index: 1;
 }
 
-@media screen and (max-width:600px){
-    .chips-container{
-        top: 114px;
-    }
-}
 .chips{
     border: 1px solid var(--button-color);
     border-radius: 1rem;

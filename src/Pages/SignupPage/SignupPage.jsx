@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { useState } from 'react'
 import {Link, useLocation, useNavigate} from 'react-router-dom'
 import { AuthContext } from '../../context/auth-context'
+import Header from '../../Components/Header/Header'
 
 const SignupPage = () => {
     const {signupUser, isAuthenticated} = useContext(AuthContext)
@@ -24,6 +25,10 @@ const SignupPage = () => {
     }
 
   return (
+    <div>
+            <div className="pos-sticky">
+      <Header/>
+      </div>
     <div className="cart-management">
         <div className="cart-manage-header">
           <h2>Please Signup to continue</h2>
@@ -57,6 +62,7 @@ const SignupPage = () => {
             <div>Already have an account? <Link className="signup-link" to='/login'>Login here</Link> </div>
           </div>
         </div>
+      </div>
       </div>
   )
 }
