@@ -3,6 +3,7 @@ import "./SingleProductsPage.css";
 import { useParams, Link } from "react-router-dom";
 import { CardContext } from "../../context/card-context";
 import Header from "../../Components/Header/Header";
+import {FaCaretLeft} from 'react-icons/fa'
 
 const SingleProductsPage = () => {
   const { productId } = useParams();
@@ -20,7 +21,7 @@ const SingleProductsPage = () => {
       </div>
       <div className="single-card-product">
         <Link className="link-tag" to="/plp">
-          <button className="card-btn">Go to products page</button>
+          <button className="card-btn flex-center"><FaCaretLeft/>Go back to products page</button>
         </Link>
         <div className="single-product-wrapper">
           <div>

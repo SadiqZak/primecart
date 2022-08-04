@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { CardContext } from "../../context/card-context";
 import { Link } from "react-router-dom";
 import Header from "../../Components/Header/Header";
-import { useState } from "react";
+import {FaCaretLeft} from 'react-icons/fa'
 
 const CartManagementpage = () => {
   const { state, dispatch } = useContext(CardContext);
@@ -18,7 +18,7 @@ const CartManagementpage = () => {
     </div>
     <div className="cart-management">
       <div className="cart-manage-header">
-      <Link className="link-tag" to="/plp"><button className="card-btn">Go to products page</button></Link>
+      <Link className="link-tag" to="/plp"><button className="card-btn flex-center"><FaCaretLeft/>Go back to products page</button></Link>
       <h1>My Cart: {state.addedCartProducts} </h1>
       </div>
       

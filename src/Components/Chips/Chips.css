@@ -24,6 +24,7 @@
 }
 
 .chips.selected{
+    border: 1px solid var(--button-color);
     background-color: var(--primary-text-color);
     color: var(--menu-bar);
 }

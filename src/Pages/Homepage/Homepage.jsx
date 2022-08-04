@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom";
 import Header from "../../Components/Header/Header"
+import { CardContext } from "../../context/card-context";
 
 const Homepage = () => {
+  const {dispatch}= useContext(CardContext)
+  const clickHandlerShoes = ()=>{
+    dispatch({type:"shoes"})
+  }
+
+  const clickHandlerLaces = ()=>{
+    dispatch({type:"laces"})
+  }
   return (
     <div>
       <div className="pos-sticky">
@@ -22,7 +31,7 @@ const Homepage = () => {
       </div>
 
       <div className="secondary-cover-container">
-      <Link to={'/plp'}><div>
+      <Link onClick={clickHandlerShoes} to={'/plp'}><div>
           <img
             className="secondary-cover"
             src={require("../../Assets/secondary-cover-1.jpg")}
@@ -30,7 +39,7 @@ const Homepage = () => {
           />
         </div></Link>
         
-        <Link to={'/plp'}><div>
+        <Link onClick={clickHandlerLaces} to={'/plp'}><div>
           <img
             className="secondary-cover"
             src={require("../../Assets/secondary-cover-2.jpg")}

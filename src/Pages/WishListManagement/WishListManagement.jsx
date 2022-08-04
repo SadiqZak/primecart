@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import {Link} from 'react-router-dom'
 import { CardContext } from '../../context/card-context'
 import Header from '../../Components/Header/Header'
+import {FaCaretLeft} from "react-icons/fa"
 
 const WishListManagement=()=> {
     const {state, dispatch} = useContext(CardContext)
@@ -12,7 +13,7 @@ const WishListManagement=()=> {
     </div>
     <div className="cart-management">
       <div className="cart-manage-header">
-      <Link className="link-tag" to="/plp"><button className="card-btn">Go to products page</button></Link>
+      <Link className="link-tag" to="/plp"><button className="card-btn flex-center"><FaCaretLeft/>Go back to products page</button></Link>
       <h1>My WishList: {state.addedWishProducts} </h1>
       </div>
       
