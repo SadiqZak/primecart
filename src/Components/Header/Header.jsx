@@ -57,8 +57,10 @@ const Header = () => {
     }else if("laces".match(userSearch.toLowerCase())){
       dispatch({type:"laces"})
     }else if("boys" === userSearch.toLowerCase()  || "boy" === userSearch.toLowerCase()){
+      dispatch({type:"All"})
       dispatch({type:"Boys"})
     }else if("girls"=== userSearch.toLowerCase() || "girl"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
       dispatch({type:"Girls"})
     }
     setUserSearch("");
@@ -75,8 +77,10 @@ const Header = () => {
     }else if("laces".match(userSearch.toLowerCase())){
       dispatch({type:"laces"})
     }else if("boys" === userSearch.toLowerCase()  || "boy" === userSearch.toLowerCase()){
+      dispatch({type:"All"})
       dispatch({type:"Boys"})
     }else if("girls"=== userSearch.toLowerCase() || "girl"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
       dispatch({type:"Girls"})
     }
     setUserSearch("");
