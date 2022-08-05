@@ -62,13 +62,11 @@ const reducerFunc = (state, action) => {
       return {
         ...state,
         categoryFilter: action.type,
-        chipsCategory:"All"
       };
     case "Girls":
       return {
         ...state,
         categoryFilter: action.type,
-        chipsCategory:"All"
       };
     case "ClearCategorySex":
       return {
