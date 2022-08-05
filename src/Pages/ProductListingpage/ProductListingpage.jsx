@@ -7,6 +7,8 @@ import Header from "../../Components/Header/Header";
 import {FaAngleUp} from "react-icons/fa"
 import {FaAngleDown} from "react-icons/fa"
 // import ReactLoading from 'react-loading';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductListingpage = () => {
   const { filteredData, dispatch, state, isLoading } = useContext(CardContext);
@@ -43,11 +45,14 @@ const ProductListingpage = () => {
                 {!state.productList.find((item) => item.id === id).cartedState
                   .addedWish && (
                   <span
-                    onClick={() =>
+                    onClick={() =>{
                       dispatch({
                         type: "AddToWish",
                         payload: { id, title, price, rating, img, _id },
-                      })
+                      });
+                      toast.success("Added to Wish")
+                    }
+                     
                     }
                     className="card-icon material-icons"
                   >
@@ -57,11 +62,14 @@ const ProductListingpage = () => {
                 {state.productList.find((item) => item.id === id).cartedState
                   .addedWish && (
                   <span
-                    onClick={() =>
+                    onClick={() =>{
                       dispatch({
                         type: "RemoveFromWish",
                         payload: { id, title, price, rating, img, _id },
-                      })
+                      });
+                      toast.success("Removed from Wish")
+                    }
+                    
                     }
                     className="card-icon material-icons"
                   >
@@ -77,6 +85,7 @@ const ProductListingpage = () => {
                           type: "AddToCart",
                           payload: { id,_id, title, price, rating, img, count },
                         });
+                        toast.success("Added to Cart")
                   }}
                   className="card-btn"
                 >
@@ -101,6 +110,7 @@ const ProductListingpage = () => {
           
           <p>Filter</p>
       </div>
+      <ToastContainer position="bottom-right" />
     </div>
      );
 };

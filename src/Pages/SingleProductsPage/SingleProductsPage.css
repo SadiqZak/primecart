@@ -55,3 +55,8 @@
     gap: 2rem;
     padding: 1rem;
 }
+
+.flex-center{
+    display: flex;
+    align-items: center;
+}

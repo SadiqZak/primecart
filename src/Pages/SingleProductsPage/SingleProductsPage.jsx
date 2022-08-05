@@ -3,6 +3,9 @@ import "./SingleProductsPage.css";
 import { useParams, Link } from "react-router-dom";
 import { CardContext } from "../../context/card-context";
 import Header from "../../Components/Header/Header";
+import {FaCaretLeft} from 'react-icons/fa'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SingleProductsPage = () => {
   const { productId } = useParams();
@@ -20,7 +23,7 @@ const SingleProductsPage = () => {
       </div>
       <div className="single-card-product">
         <Link className="link-tag" to="/plp">
-          <button className="card-btn">Go to products page</button>
+          <button className="card-btn flex-center"><FaCaretLeft/>Go back to products page</button>
         </Link>
         <div className="single-product-wrapper">
           <div>
@@ -44,11 +47,13 @@ const SingleProductsPage = () => {
               {!state.productList.find((item) => item.id === id).cartedState
                 .addedWish && (
                 <span
-                  onClick={() =>
+                  onClick={() =>{
                     dispatch({
                       type: "AddToWish",
                       payload: { id, title, price, rating, img },
-                    })
+                    });
+                    toast.success("Added to Wishlist")
+                  }
                   }
                   className="card-icon material-icons"
                 >
@@ -58,11 +63,13 @@ const SingleProductsPage = () => {
               {state.productList.find((item) => item.id === id).cartedState
                 .addedWish && (
                 <span
-                  onClick={() =>
+                  onClick={() =>{
                     dispatch({
                       type: "RemoveFromWish",
                       payload: { id, title, price, rating, img },
-                    })
+                    });
+                    toast.success("Removed from Wishlist")
+                  }
                   }
                   className="card-icon material-icons"
                 >
@@ -79,6 +86,7 @@ const SingleProductsPage = () => {
                     type: "AddToCart",
                     payload: { id, title, price, rating, img, count },
                   });
+                  toast.success("Added to Cart")
                 }}
                 className="card-btn"
               >
@@ -94,6 +102,7 @@ const SingleProductsPage = () => {
           </div>
         </div>
       </div>
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };

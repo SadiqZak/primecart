@@ -107,6 +107,9 @@
 }
 
 .quantity-button{
+    display: flex;
+    justify-content: center;
+    align-content: center;
     text-align: center;
     align-items: center;
     height: 1rem;

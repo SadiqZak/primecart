@@ -4,6 +4,7 @@ import Badge from "./Badge/Badge";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
 import { CardContext } from "../../context/card-context";
+import {FaSistrix} from 'react-icons/fa'
 
 const Header = () => {
   const navigate = useNavigate();
@@ -19,14 +20,49 @@ const Header = () => {
     return arr.filter((str) => str.title.toLowerCase().match(sub));
   };
 
+  const testCat = (arr, sub) => {
+    sub = sub.toLowerCase();
+    return arr.filter((str) => str.categoryName.toLowerCase().match(sub));
+  };
+
+  const testCatSex = (arr, sub) => {
+    sub = sub.toLowerCase();
+    return arr.filter((str) => str.categorySex.toLowerCase().match(sub));
+  };
+
+
   const searchHandler = (e) => {
     e.preventDefault();
     setUserSearch(e.target.value);
-    setUserSearchResults(test(productList, e.target.value));
+    if(test(productList, e.target.value).length!==0){
+      setUserSearchResults(test(productList, e.target.value));
+    }else if(testCat(productList, e.target.value).length!==0){
+      setUserSearchResults(testCat(productList, e.target.value));
+    }else{
+      setUserSearchResults(testCatSex(productList, e.target.value));
+    }
+    
   };
 
   const searchClickHandler = () => {
     setUserSearch("");
+  };
+
+  const searchCategoryHandler = () => {
+    if(userSearchResults.length!==0){
+      dispatch({type:'SearchFilterData', payload:userSearchResults})
+    }
+    if("shoes".match(userSearch.toLowerCase())){
+      dispatch({type:"shoes"})
+    }else if("laces".match(userSearch.toLowerCase())){
+      dispatch({type:"laces"})
+    }else if("boys" === userSearch.toLowerCase()  || "boy" === userSearch.toLowerCase()){
+      dispatch({type:"Boys"})
+    }else if("girls"=== userSearch.toLowerCase() || "girl"=== userSearch.toLowerCase()){
+      dispatch({type:"Girls"})
+    }
+    setUserSearch("");
+    navigate("/plp")
   };
 
   const submitHandler = (e) => {
@@ -34,9 +70,20 @@ const Header = () => {
     if(userSearchResults.length!==0){
       dispatch({type:'SearchFilterData', payload:userSearchResults})
     }
+    if("shoes".match(userSearch.toLowerCase())){
+      dispatch({type:"shoes"})
+    }else if("laces".match(userSearch.toLowerCase())){
+      dispatch({type:"laces"})
+    }else if("boys" === userSearch.toLowerCase()  || "boy" === userSearch.toLowerCase()){
+      dispatch({type:"Boys"})
+    }else if("girls"=== userSearch.toLowerCase() || "girl"=== userSearch.toLowerCase()){
+      dispatch({type:"Girls"})
+    }
     setUserSearch("");
+    navigate("/plp")
   };
 
+  let categoryList = ['shoes', 'shoe','lace','laces', 'boy', 'boys', 'girl', 'girls']
   return (
     <div className="header">
       <div className="header-wrapper">
@@ -55,7 +102,24 @@ const Header = () => {
           </div>
           {userSearch.length !== 0 && (
             <div className="search-dropdown">
-              {userSearchResults.length !== 0 ? (
+              {
+                categoryList.some((categoryChild)=>categoryChild===userSearch.toLowerCase())
+                ?
+                <div
+                  onClick={searchCategoryHandler}
+                  className="header-link"
+                >
+                  <div className="user-search-container">
+                    <div>
+                      <div className="user-result-category">
+                      <FaSistrix/>{userSearch}
+                      </div>
+                      <small className="user-result-category">Category</small>
+                    </div>
+                  </div>
+                </div>
+                : <>
+                {userSearchResults.length !== 0 ? (
                 userSearchResults?.map((userResult) => (
                   <Link
                   key={userResult._id}
@@ -83,6 +147,10 @@ const Header = () => {
               ) : (
                 <div>No information available</div>
               )}
+                </>
+              }
+                
+              
             </div>
           )}
         </form>
