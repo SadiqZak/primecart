@@ -48,14 +48,13 @@ const Header = () => {
     setUserSearch("");
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const searchCategoryHandler = () => {
     if(userSearchResults.length!==0){
       dispatch({type:'SearchFilterData', payload:userSearchResults})
     }
-    if("shoes".toLowerCase().match(userSearch.toLowerCase())){
+    if("shoes".match(userSearch.toLowerCase())){
       dispatch({type:"shoes"})
-    }else if("laces".toLowerCase().match(userSearch.toLowerCase())){
+    }else if("laces".match(userSearch.toLowerCase())){
       dispatch({type:"laces"})
     }else if("boys" === userSearch.toLowerCase()  || "boy" === userSearch.toLowerCase()){
       dispatch({type:"Boys"})
@@ -66,7 +65,25 @@ const Header = () => {
     navigate("/plp")
   };
 
-  let category = ['shoes', 'shoe','lace','laces', 'boy', 'boys', 'girl', 'girls']
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if(userSearchResults.length!==0){
+      dispatch({type:'SearchFilterData', payload:userSearchResults})
+    }
+    if("shoes".match(userSearch.toLowerCase())){
+      dispatch({type:"shoes"})
+    }else if("laces".match(userSearch.toLowerCase())){
+      dispatch({type:"laces"})
+    }else if("boys" === userSearch.toLowerCase()  || "boy" === userSearch.toLowerCase()){
+      dispatch({type:"Boys"})
+    }else if("girls"=== userSearch.toLowerCase() || "girl"=== userSearch.toLowerCase()){
+      dispatch({type:"Girls"})
+    }
+    setUserSearch("");
+    navigate("/plp")
+  };
+
+  let categoryList = ['shoes', 'shoe','lace','laces', 'boy', 'boys', 'girl', 'girls']
   return (
     <div className="header">
       <div className="header-wrapper">
@@ -86,15 +103,16 @@ const Header = () => {
           {userSearch.length !== 0 && (
             <div className="search-dropdown">
               {
-                userSearch.toLowerCase()=== "boy" || userSearch.toLowerCase() === "boys" ?
+                categoryList.some((categoryChild)=>categoryChild===userSearch.toLowerCase())
+                ?
                 <div
-                  onClick={searchClickHandler}
+                  onClick={searchCategoryHandler}
                   className="header-link"
                 >
                   <div className="user-search-container">
                     <div>
                       <div className="user-result-category">
-                      <FaSistrix/>Boys
+                      <FaSistrix/>{userSearch}
                       </div>
                       <small className="user-result-category">Category</small>
                     </div>

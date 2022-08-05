@@ -50,7 +50,7 @@ const SidebarChild = () => {
             <div>
               <small
                 className="clear-sidebar"
-                onClick={() =>dispatch({ type: "ClearPrice" })}
+                onClick={() =>{dispatch({ type: "ClearPrice" })}}
               >
                 Clear
               </small>
@@ -80,7 +80,21 @@ const SidebarChild = () => {
             <div>
               <small
                 className="clear-sidebar"
-                onClick={() => {dispatch({ type: "ClearCategorySex" }); dispatch({type:"All"})}}
+                onClick={() =>{ dispatch({ type: "ClearCategorySex" });
+                if(state.chipsCategory.length!==0){
+                  if(state.chipsCategory==="laces"){
+                    dispatch({type:"All"})
+                    dispatch({type:"laces"})
+                  }else if(state.chipsCategory==="shoes"){
+                    dispatch({type:"All"})
+                    dispatch({type:"shoes"})
+                  }else{
+                    dispatch({type:"All"})
+                  }
+                }else{
+                  dispatch({type:"All"})}}
+                }
+                
               >
                 Clear
               </small>
