@@ -16,6 +16,7 @@ const Chips = () => {
       </div>
       <div
         onClick={() => {
+          dispatch({ type: "All" });
           dispatch({ type: "shoes" });
         }}
         className={`chips ${state.chipsCategory==="shoes" && "selected"} `}
@@ -24,6 +25,7 @@ const Chips = () => {
       </div>
       <div
         onClick={() => {
+          dispatch({ type: "All" });
           dispatch({ type: "laces" });
         }}
         className={`chips ${state.chipsCategory==="laces" && "selected"} `}
