@@ -12,6 +12,8 @@ import RequiresAuth from './utils/require-auth';
 import Mockman from "mockman-js";
 import SingleProductsPage from './Pages/SingleProductsPage/SingleProductsPage';
 import SignupPage from './Pages/SignupPage/SignupPage';
+import CheckoutPage from './Pages/CheckoutPage/CheckoutPage';
+import OrderDetails from './Pages/OrderDetails/OrderDetails';
 
 function MockAPI() {
   return (
@@ -49,6 +51,22 @@ function App() {
             <Route
           path="/singlepage/:productId"
           element={<SingleProductsPage/> }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <RequiresAuth>
+              <CheckoutPage />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/orderdetails"
+          element={
+            <RequiresAuth>
+              <OrderDetails />
+            </RequiresAuth>
+          }
         />
         <Route path="/mockman" element={<Mockman/>}/>
       </Routes>

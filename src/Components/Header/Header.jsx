@@ -52,9 +52,9 @@ const Header = () => {
     if(userSearchResults.length!==0){
       dispatch({type:'SearchFilterData', payload:userSearchResults})
     }
-    if("shoes".match(userSearch.toLowerCase())){
+    if("shoes"=== userSearch.toLowerCase() || "shoe"=== userSearch.toLowerCase()){
       dispatch({type:"shoes"})
-    }else if("laces".match(userSearch.toLowerCase())){
+    }else if("laces"=== userSearch.toLowerCase() || "lace"=== userSearch.toLowerCase()){
       dispatch({type:"laces"})
     }else if("boys" === userSearch.toLowerCase()  || "boy" === userSearch.toLowerCase()){
       dispatch({type:"All"})
@@ -72,9 +72,9 @@ const Header = () => {
     if(userSearchResults.length!==0){
       dispatch({type:'SearchFilterData', payload:userSearchResults})
     }
-    if("shoes".match(userSearch.toLowerCase())){
+    if("shoes"=== userSearch.toLowerCase() || "shoe"=== userSearch.toLowerCase()){
       dispatch({type:"shoes"})
-    }else if("laces".match(userSearch.toLowerCase())){
+    }else if("laces"=== userSearch.toLowerCase() || "lace"=== userSearch.toLowerCase()){
       dispatch({type:"laces"})
     }else if("boys" === userSearch.toLowerCase()  || "boy" === userSearch.toLowerCase()){
       dispatch({type:"All"})

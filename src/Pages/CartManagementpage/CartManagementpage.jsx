@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { CardContext } from "../../context/card-context";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../../Components/Header/Header";
 import { FaCaretLeft } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,11 +8,18 @@ import "react-toastify/dist/ReactToastify.css";
 
 const CartManagementpage = () => {
   const { state, dispatch } = useContext(CardContext);
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch({ type: "TotalAmount" });
   }, [state.cartProducts]);
 
+  const navigateCheckout = () =>{
+    if(state.cartProducts.length!==0){
+      navigate('/checkout')
+    }
+  }
+  
   return (
     <div>
       <div className="pos-sticky">
@@ -30,6 +37,7 @@ const CartManagementpage = () => {
         </div>
 
         <div className="cart-management-wrapper">
+          <div className="cart-product-listing-wrapper">
           <div className="cart-product-listing">
             {state.cartProducts.map(
               ({ id, _id, img, title, rating, price, count }) => (
@@ -93,9 +101,11 @@ const CartManagementpage = () => {
                   >
                     Remove from Cart
                   </button>
+                  <div className="padder"></div>
                 </div>
               )
             )}
+          </div>
           </div>
           <div className="cart-price">
             <div>
@@ -139,13 +149,13 @@ const CartManagementpage = () => {
                 </div>
               </div>
               <div>
-                <button className="card-btn">Place Order</button>
+                <button onClick={navigateCheckout} className="card-btn">Place Order</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <ToastContainer position="bottom-right" />
+      <ToastContainer position="bottom-right" autoClose={1000}/>
     </div>
   );
 };

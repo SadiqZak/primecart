@@ -97,7 +97,7 @@ const SignupPage = () => {
             <div>Already have an account? <Link className="signup-link" to='/login'>Login here</Link> </div>
           </div>
           <ToastContainer 
-          position="bottom-right"/>
+          position="bottom-right" autoClose={1000}/>
         </div>
       </div>
       </div>

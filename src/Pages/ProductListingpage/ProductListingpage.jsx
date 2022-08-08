@@ -110,7 +110,7 @@ const ProductListingpage = () => {
           
           <p>Filter</p>
       </div>
-      <ToastContainer position="bottom-right" />
+      <ToastContainer position="bottom-right" autoClose={1000}/>
     </div>
      );
 };

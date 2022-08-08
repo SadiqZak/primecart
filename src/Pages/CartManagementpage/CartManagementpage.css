@@ -10,11 +10,12 @@
 }
 
 .cart-management-card{
-    width: 400px;
+    width: 100%;
     min-height: 200px;
     height: max-content;
     border: 1px solid var(--background-grey-color);
     cursor: pointer;
+    margin-bottom: 0.5rem;
 }
 
 @media screen and (max-width:600px) {
@@ -53,9 +54,15 @@
 .cart-product-listing{
     min-height: 300px;
     height: max-content;
+}
+
+.cart-product-listing-wrapper{
+    height: 65vh;
+    overflow-y: scroll;
     background-color: var(--white-color);
     color: var(--menu-bar);
     display: flex;
+    gap: 1rem;
     flex-grow: 0.6;
     text-align: center;
     justify-content: center;
@@ -63,8 +70,8 @@
     gap: 1rem;
     box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.2);
     padding: 1rem;
-}
 
+}
 .cart-price{
     height: max-content;
     min-width: 300px;
@@ -77,6 +84,9 @@
     padding: 1rem;
 }
 
+.padder{
+    height: 1rem;
+}
 .cart-price-wrapper{
     padding: 1rem;
 }

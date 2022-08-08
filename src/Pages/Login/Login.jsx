@@ -116,7 +116,7 @@ const Login = () => {
                 Sign up here
               </Link>{" "}
             </div>
-            <ToastContainer position="bottom-right" />
+            <ToastContainer position="bottom-right" autoClose={1000}  />
           </div>
         </div>
       </div>

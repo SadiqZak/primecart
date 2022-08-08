@@ -57,7 +57,7 @@ const Homepage = () => {
       <div className="footer">
           <div className="color-primary">©PrimeCart, Inc.</div>
       </div>
-      <ToastContainer position="bottom-right" />
+      <ToastContainer position="bottom-right" autoClose={2000}/>
     </div>
   );
 };
