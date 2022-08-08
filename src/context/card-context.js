@@ -15,6 +15,7 @@ const CardProvider = ({children}) =>{
         addedCartProducts:0,
         addedWishProducts:0,
         totalAmount:0,
+        finalAmount:0,
         chipsCategory:"",
         priceFilter:"",
         categoryFilter:"",
@@ -59,7 +60,7 @@ const CardProvider = ({children}) =>{
  
 
     return(
-        <CardContext.Provider value={{state, dispatch, filteredData, isLoading, setIsLoading}}>
+        <CardContext.Provider value={{state, dispatch, filteredData, isLoading, setIsLoading, getAllProducts}}>
             {children}
         </CardContext.Provider>
     )
