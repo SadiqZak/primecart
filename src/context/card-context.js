@@ -12,6 +12,7 @@ const CardProvider = ({children}) =>{
         cartProducts:[],
         wishProducts:[],
         searchFilterData:[],
+        currentDispatchDetails:{},
         addedCartProducts:0,
         addedWishProducts:0,
         totalAmount:0,

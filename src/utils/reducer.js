@@ -138,7 +138,13 @@ const reducerFunc = (state, action) => {
           addedCartProducts:0,
           addedWishProducts:0
         }
-      }
+      };
+
+      case "UpdateAddress":
+        return{
+          ...state,
+          currentDispatchDetails: action.payload
+        }
 
       case "RemoveFromCart":
       const prodValDec = Number(state.cartProducts.find((item)=>item.id===action.payload.id).price)

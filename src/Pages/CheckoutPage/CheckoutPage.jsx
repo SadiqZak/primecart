@@ -11,30 +11,103 @@ import { useState } from "react";
 
 const CheckoutPage = () => {
   const { state, dispatch, getAllProducts } = useContext(CardContext);
-  const { totalAmount, cartProducts } = state;
-  const [userAddress, setUserAddress] = useState([{
-    name:"Jason Stathom",
-    address:"#588 Puttenahalli Rd, Ashta Laxmi Layout, JP Nagar VI Phase, J P Nagar",
-    mobile:"800029900",
-    checked: false
-  }])
+  const { totalAmount, cartProducts, currentDispatchDetails } = state;
+  const [currentAddress, setCurrentAddress] = useState({});
+  const [addAddress, setAddAddress] = useState(false);
+  const [userInput, setUserInput] = useState({
+    name: "",
+    address: {
+      doorNo: "",
+      area: "",
+      district: "",
+    },
+    contact: "",
+    cart: cartProducts,
+    amount: totalAmount,
+  });
+  const [userAddress, setUserAddress] = useState([
+    {
+      name: "Jason Stathom",
+      address: {
+        doorNo: "#588 Puttenahalli Rd",
+        area: "Ashta Laxmi Layout, JP Nagar VI Phase, J P Nagar",
+        district: "Bengaluru",
+      },
+      contact: "8000299001",
+      cart: cartProducts,
+      amount: totalAmount,
+    },
+    {
+      name: "Keanu Reeves",
+      address: {
+        doorNo: "Shop No. 1010, Near Navarang Bar",
+        area: "6th Block, Dr. Rajakumar Road, Rajaji Nagar, Srirampuram",
+        district: "Bengaluru",
+      },
+      contact: "8008900032",
+      cart: cartProducts,
+      amount: totalAmount,
+    },
+  ]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  useEffect(()=>{
-    if(cartProducts.length===0){
-        navigate('/plp')
+  useEffect(() => {
+    if (cartProducts.length === 0) {
+      navigate("/plp");
     }
-  },[])
+  }, []);
 
-  const clearCart = ()=>{
-    dispatch({type:"ClearCart"})
-  }
+  const clearCart = () => {
+    dispatch({ type: "ClearCart" });
+  };
 
-  const selectHandler = ()=>{
-    return
-    // setUserAddress((prev)=>prev[0].checked!=true)
-  }
+  const selectHandler = (e) => {
+    let userID = e.target.value;
+    let addressDispatch = userAddress.find((user) => user.contact === userID);
+    dispatch({ type: "UpdateAddress", payload: addressDispatch });
+    setCurrentAddress(addressDispatch);
+  };
+
+  const proceedToCheckout = () => {
+    if (Object.keys(currentAddress).length !== 0) {
+      displayPaymentGateway();
+    } else {
+      toast.error("Please select or add address");
+    }
+  };
+
+  const addNewAddress = () => {
+    setAddAddress((prev) => !prev);
+  };
+
+  const newAddressFormHandler = (e) => {
+    e.preventDefault();
+    if(userInput.contact.length!==10){
+      toast.error("Contact number should be 10 digits")
+    }else{
+      if(userAddress.some((user)=>user.contact===userInput.contact)){
+        toast.error("Address details already exist")
+      }else{
+        setUserAddress(() => {
+          return [...userAddress, userInput];
+        });
+      }
+    }
+    setAddAddress((prev) => !prev);
+    setUserInput({
+      name: "",
+      address: {
+        doorNo: "",
+        area: "",
+        district: "",
+      },
+      contact: "",
+      cart: cartProducts,
+      amount: totalAmount,
+    })
+  
+  };
 
   const loadScript = async (url) => {
     return new Promise((resolve) => {
@@ -68,18 +141,19 @@ const CheckoutPage = () => {
       description: "Thank you for shopping with us!",
       image: "",
       handler: function (response) {
-        if(response){
-            toast.success(response.razorpay_payment_id);
-            clearCart()
-            getAllProducts()
-            navigate('/orderdetails')
+        if (response) {
+          toast.success("Order placed successfully");
+          clearCart();
+          getAllProducts();
+          setTimeout(() => {
+            navigate("/orderdetails");
+          }, [2000]);
         }
-        
       },
       prefill: {
         name: "Guest User",
         email: "sdfdsjfh2@ndsfdf.com",
-        phone_number: "9899999999",
+        contact: "9899999999",
       },
       theme: {
         color: "#2B51E1",
@@ -109,21 +183,121 @@ const CheckoutPage = () => {
             <h3>Shipping details</h3>
             <hr />
             <div className="address">
-              <div className="address-child">{
-                userAddress?.map((user)=>(
-                    <div onClick={selectHandler} className="user-address-cont">
-                    <input type="radio" name="details"/>
-                    <div className="user-address">
-                    <h3>{user.name}</h3>
-                    <div>{user.address}</div>
-                    <div>{user.mobile}</div>
-                    </div>
-                    </div>
-                
-                ))
-              }</div>
-              <button className="card-btn wd-300">Add New +</button>
+              <div className="address-child">
+                {userAddress?.map((user) => (
+                  <div className="user-address-cont">
+                    <input
+                      checked={user.contact === currentAddress.contact}
+                      onClick={selectHandler}
+                      value={user.contact}
+                      type="radio"
+                      name="details"
+                      id={user.contact}
+                    />
+                    <label htmlFor={user.contact} className="user-address">
+                      <h3>{user.name[0].toUpperCase() + user.name.slice(1)}</h3>
+                      <div>{`${user.address.doorNo} ${user.address.area} ${user.address.district}`}</div>
+                      <div>{user.contact}</div>
+                    </label>
+                  </div>
+                ))}
+              </div>
+              <button onClick={addNewAddress} className="card-btn wd-300">
+                Add New +
+              </button>
             </div>
+            {addAddress && (
+              <div className="modal">
+                <form
+                  className="modal-wrapper"
+                  onSubmit={newAddressFormHandler}
+                >
+                  <div className="flex-dir-column-login">
+                    <label htmlFor="name">Name: </label>
+                    <input
+                      onChange={(e) =>
+                        setUserInput({ ...userInput, name: e.target.value })
+                      }
+                      className="login-inp"
+                      type="text"
+                      id="name"
+                      value={userInput.name}
+                    />
+                  </div>
+                  <div className="flex-dir-column-login">
+                    <label htmlFor="address">Address: </label>
+                    <div className="flex-column">
+                      <label htmlFor="addressDoor">Door No.</label>
+                      <input
+                        onChange={(e) =>
+                          setUserInput({
+                            ...userInput,
+                            address: {
+                              ...userInput.address,
+                              doorNo: e.target.value,
+                            },
+                          })
+                        }
+                        className="login-inp"
+                        type="text"
+                      value={userInput.address.doorNo}
+                        id="addressDoor"
+                      />
+                    </div>
+                    <div className="flex-column">
+                      <label htmlFor="addressArea">Area/Locality</label>
+                      <input
+                        onChange={(e) =>
+                          setUserInput({
+                            ...userInput,
+                            address: {
+                              ...userInput.address,
+                              area: e.target.value,
+                            },
+                          })
+                        }
+                        className="login-inp"
+                        type="text"
+                        
+                      value={userInput.address.area}
+                        id="addressArea"
+                      />
+                    </div>
+                    <div className="flex-column">
+                      <label htmlFor="addressDistrict">District</label>
+                      <input
+                        onChange={(e) =>
+                          setUserInput({
+                            ...userInput,
+                            address: {
+                              ...userInput.address,
+                              district: e.target.value,
+                            },
+                          })
+                        }
+                        className="login-inp"
+                        type="text"
+                      value={userInput.address.district}
+                        id="addressDistrict"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-dir-column-login">
+                    <label htmlFor="contact">Contact No.: </label>
+                    <input
+                      onChange={(e) =>
+                        setUserInput({ ...userInput, contact: e.target.value })
+                      }
+                      className="login-inp"
+                      type="text"
+                      id="contact"
+                      value={userInput.contact}
+                    />
+                  </div>
+                  <button className="login-btn">Submit</button>
+                </form>
+              </div>
+            )}
           </div>
           <div className="cart-price">
             <div>
@@ -147,7 +321,7 @@ const CheckoutPage = () => {
                 </div>
               </div>
               <div>
-                <button onClick={displayPaymentGateway} className="card-btn">
+                <button onClick={proceedToCheckout} className="card-btn">
                   Proceed to Checkout
                 </button>
               </div>

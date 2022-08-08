@@ -14,7 +14,8 @@
 }
 
 .checkout-cart{
-    height: 300px;
+    min-height: 300px;
+    height: max-content;
     background-color: var(--white-color);
     color: var(--menu-bar);
     display: flex;
@@ -60,4 +61,25 @@
     gap: 1rem;
     padding: 1rem;
     background-color: var(--background-grey-color);
+}
+
+.modal-wrapper{
+    margin: auto;
+    min-height: 300px;
+    height: max-content;
+    width:300px;
+    background-color: var(--white-color);
+    color: var(--menu-bar);
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    gap: 1rem;
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.2);
+    padding: 1rem;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
 }
